@@ -13,9 +13,9 @@ import visualThree from "@/assets/visual-03.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mara Voss — Interior & Graphic Designer" },
-      { name: "description", content: "Selected interior architecture and visual identity work by multidisciplinary designer Mara Voss." },
-      { property: "og:title", content: "Mara Voss — Interior & Graphic Designer" },
+      { title: "Hadeera Tariq — Interior & Graphic Designer" },
+      { name: "description", content: "Selected interior architecture and visual identity work by multidisciplinary designer Hadeera Tariq." },
+      { property: "og:title", content: "Hadeera Tariq — Interior & Graphic Designer" },
       { property: "og:description", content: "A multidisciplinary practice merging interior architecture with compelling graphic identities." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -68,8 +68,8 @@ function Portfolio() {
 
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "border-b border-border bg-surface-strong backdrop-blur-xl" : "bg-transparent"}`}>
         <div className="mx-auto grid h-20 max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] items-center px-5 sm:h-24 sm:px-8 lg:px-12">
-          <a href="#top" className="flex min-w-0 items-baseline gap-3" aria-label="Mara Voss, back to top">
-            <span className="font-display text-2xl">MV</span>
+          <a href="#top" className="flex min-w-0 items-baseline gap-3" aria-label="Hadeera Tariq, back to top">
+            <span className="font-display text-2xl">HT</span>
             <span className="hidden text-[10px] font-medium uppercase tracking-[0.24em] text-muted-foreground sm:block">Multidisciplinary Designer</span>
           </a>
           <nav aria-label="Primary navigation" className="flex shrink-0 items-center gap-5 text-[11px] font-medium uppercase tracking-[0.18em] sm:gap-9">
@@ -83,8 +83,8 @@ function Portfolio() {
       <section id="top" className="relative flex min-h-[92svh] items-center px-5 pt-24 sm:px-8 lg:px-12">
         <div className="mx-auto w-full max-w-[1600px]">
           <p className="mb-8 animate-quiet-rise text-[10px] font-medium uppercase tracking-[0.3em] text-primary sm:mb-12">Interior Architecture · Visual Identity</p>
-          <h1 className="max-w-[1300px] animate-quiet-rise text-balance font-display text-[clamp(4rem,10vw,10.5rem)] leading-[0.84] tracking-normal" style={{ animationDelay: "100ms" }}>
-            Form, Space, and <span className="italic text-primary">Visual Precision.</span>
+          <h1 className="max-w-[1300px] animate-quiet-rise text-balance font-sans text-[clamp(3.25rem,8vw,8rem)] font-semibold leading-[0.92] tracking-normal" style={{ animationDelay: "100ms" }}>
+            Form, Space, and <span className="text-primary">Visual Precision.</span>
           </h1>
           <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-[1fr_1fr] lg:grid-cols-[2fr_1fr]">
             <span />
@@ -140,7 +140,7 @@ function Portfolio() {
 
       <section id="studio" className="grid min-h-screen lg:grid-cols-2">
         <div className="min-h-[70svh] overflow-hidden lg:min-h-screen">
-          <img src={portrait} alt="Mara Voss in her architecture studio" width={1104} height={1408} loading="lazy" className="h-full w-full object-cover grayscale-[18%]" />
+          <img src={portrait} alt="Hadeera Tariq in her design studio" width={1104} height={1408} loading="lazy" className="h-full w-full object-cover grayscale-[18%]" />
         </div>
         <div className="flex items-center bg-secondary px-5 py-24 sm:px-12 lg:px-[10%]">
           <div className="max-w-xl">
@@ -150,9 +150,10 @@ function Portfolio() {
               <p>My practice moves between the room and the page. Spatial awareness gives graphic systems rhythm, depth, and proportion.</p>
               <p>In return, visual storytelling brings interiors a stronger sense of sequence, identity, and emotional resonance.</p>
             </div>
-            <dl className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-7 text-[10px] uppercase tracking-[0.18em]">
+            <dl className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-7 text-[10px] uppercase tracking-[0.18em] sm:grid-cols-3">
               <div><dt className="text-muted-foreground">Based</dt><dd className="mt-2 text-foreground">London · Worldwide</dd></div>
               <div><dt className="text-muted-foreground">Focus</dt><dd className="mt-2 text-foreground">Space · Identity</dd></div>
+              <div><dt className="text-muted-foreground">Education</dt><dd className="mt-2 text-foreground">Interior · Graphic Design</dd></div>
             </dl>
           </div>
         </div>
@@ -162,12 +163,12 @@ function Portfolio() {
         <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-center">
           <p className="mb-8 text-[10px] uppercase tracking-[0.25em] text-primary">New projects · Collaborations · Commissions</p>
           <h2 className="font-display text-[clamp(4rem,12vw,12rem)] leading-[0.82]">Let’s<br /><span className="italic">Collaborate.</span></h2>
-          <a href="mailto:studio@maravoss.design" className="mt-16 inline-flex w-fit items-center gap-4 border-b border-border pb-3 text-xl font-light transition-colors hover:border-primary hover:text-primary sm:text-3xl">
-            studio@maravoss.design <MoveUpRight className="h-6 w-6" strokeWidth={1.25} />
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hadeeratariq@gmail.com" target="_blank" rel="noreferrer" className="mt-16 inline-flex w-fit items-center gap-4 border-b border-border pb-3 text-xl font-light transition-colors hover:border-primary hover:text-primary sm:text-3xl">
+            hadeeratariq@gmail.com <MoveUpRight className="h-6 w-6" strokeWidth={1.25} />
           </a>
         </div>
         <div className="mx-auto mt-20 flex w-full max-w-[1600px] flex-col gap-7 border-t border-border pt-7 text-[10px] uppercase tracking-[0.2em] sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-muted-foreground">© 2026 Mara Voss Studio</p>
+          <p className="text-muted-foreground">© 2026 Hadeera Tariq</p>
           <div className="flex gap-7"><a href="https://behance.net" target="_blank" rel="noreferrer" className="hover:text-primary">Behance</a><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-primary">LinkedIn</a><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-primary">Instagram</a></div>
         </div>
       </footer>
