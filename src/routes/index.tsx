@@ -27,6 +27,15 @@ export const Route = createFileRoute("/")({
 
 type Filter = "all" | "spatial" | "visual";
 
+const glowDots = [
+  { x: 8, y: 12, s: 2, d: 0 }, { x: 18, y: 28, s: 1.5, d: 1.2 }, { x: 34, y: 16, s: 2.5, d: 2.4 },
+  { x: 52, y: 34, s: 1.5, d: 0.8 }, { x: 66, y: 10, s: 2, d: 3.2 }, { x: 78, y: 46, s: 1.5, d: 1.8 },
+  { x: 88, y: 22, s: 2, d: 4.1 }, { x: 12, y: 56, s: 1.5, d: 2.9 }, { x: 42, y: 62, s: 2, d: 0.5 },
+  { x: 62, y: 72, s: 1.5, d: 3.7 }, { x: 26, y: 80, s: 2.5, d: 5.0 }, { x: 74, y: 86, s: 1.5, d: 4.5 },
+  { x: 92, y: 68, s: 2, d: 1.5 }, { x: 48, y: 88, s: 1.5, d: 6.2 }, { x: 4, y: 90, s: 2, d: 3.0 },
+  { x: 56, y: 48, s: 1, d: 2.2 }, { x: 30, y: 42, s: 1, d: 5.5 }, { x: 82, y: 58, s: 1, d: 4.8 },
+];
+
 const projects = [
   { title: "Lake House 01", type: "spatial" as const, meta: "Residential · 2026", image: spatialOne, shape: "wide", width: 1600, height: 1008 },
   { title: "Northline Editions", type: "visual" as const, meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
