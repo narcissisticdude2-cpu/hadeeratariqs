@@ -1,2 +1,2 @@
-- [ ] Use regular-weight sans-serif for the unified section headings.
-- [ ] Complete the approved portfolio refinements.
+- [x] Use regular-weight sans-serif for the unified section headings.
+- [x] Complete the approved portfolio refinements.
