@@ -110,7 +110,7 @@ function Portfolio() {
           <div className="mb-14 grid gap-10 lg:mb-24 lg:grid-cols-[1fr_2fr] lg:items-end">
             <div>
               <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-primary">Selected work · 2024—26</p>
-              <h2 className="text-balance font-sans text-[clamp(3.25rem,8vw,8rem)] font-normal leading-[0.92] tracking-normal">A considered archive.</h2>
+              <h2 className="text-balance font-sans text-[clamp(1.75rem,3.5vw,3.5rem)] font-normal leading-[1.1] tracking-normal">A considered archive.</h2>
             </div>
             <div className="flex flex-wrap gap-x-7 gap-y-4 lg:justify-end">
               {([['all', 'All Projects'], ['spatial', 'Spatial & Interiors'], ['visual', 'Visual & Graphic']] as const).map(([value, label]) => (
