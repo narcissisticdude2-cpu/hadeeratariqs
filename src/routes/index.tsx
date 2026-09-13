@@ -147,7 +147,7 @@ function Portfolio() {
         <div className="flex items-center bg-secondary px-5 py-24 sm:px-12 lg:px-[10%]">
           <div className="max-w-xl">
             <p className="mb-10 text-[10px] uppercase tracking-[0.25em] text-primary">Profile / Method</p>
-            <h2 className="text-balance font-sans text-[clamp(2.25rem,5vw,5rem)] font-normal leading-[1.05] tracking-normal">Ideas gain clarity when every dimension is considered.</h2>
+            <h2 className="text-balance font-sans text-[clamp(1.75rem,3.5vw,3.5rem)] font-normal leading-[1.1] tracking-normal">Ideas gain clarity when every dimension is considered.</h2>
             <div className="mt-12 grid gap-7 text-sm font-light leading-[1.8] text-ink-soft sm:grid-cols-2">
               <p>My practice moves between the room and the page. Spatial awareness gives graphic systems rhythm, depth, and proportion.</p>
               <p>In return, visual storytelling brings interiors a stronger sense of sequence, identity, and emotional resonance.</p>
