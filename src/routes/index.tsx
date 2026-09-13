@@ -154,10 +154,11 @@ function Portfolio() {
             </div>
             <div className="mt-14 border-y border-border py-8">
               <p className="text-[10px] uppercase tracking-[0.22em] text-primary">Education</p>
-              <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">Interior · Graphic Design</p>
+              <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">BS Interior Design</p>
+              <p className="mt-2 text-[10px] font-light uppercase tracking-[0.2em] text-muted-foreground">Expected graduation · 2027</p>
             </div>
             <dl className="mt-8 grid grid-cols-2 gap-8 text-[10px] uppercase tracking-[0.18em]">
-              <div><dt className="text-muted-foreground">Based</dt><dd className="mt-2 text-foreground">London · Worldwide</dd></div>
+              <div><dt className="text-muted-foreground">Based</dt><dd className="mt-2 text-foreground">Lahore, Pakistan</dd></div>
               <div><dt className="text-muted-foreground">Focus</dt><dd className="mt-2 text-foreground">Space · Identity</dd></div>
             </dl>
           </div>
