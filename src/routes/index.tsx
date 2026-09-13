@@ -27,6 +27,15 @@ export const Route = createFileRoute("/")({
 
 type Filter = "all" | "spatial" | "visual";
 
+const glowDots = [
+  { x: 8, y: 12, s: 2, d: 0 }, { x: 18, y: 28, s: 1.5, d: 1.2 }, { x: 34, y: 16, s: 2.5, d: 2.4 },
+  { x: 52, y: 34, s: 1.5, d: 0.8 }, { x: 66, y: 10, s: 2, d: 3.2 }, { x: 78, y: 46, s: 1.5, d: 1.8 },
+  { x: 88, y: 22, s: 2, d: 4.1 }, { x: 12, y: 56, s: 1.5, d: 2.9 }, { x: 42, y: 62, s: 2, d: 0.5 },
+  { x: 62, y: 72, s: 1.5, d: 3.7 }, { x: 26, y: 80, s: 2.5, d: 5.0 }, { x: 74, y: 86, s: 1.5, d: 4.5 },
+  { x: 92, y: 68, s: 2, d: 1.5 }, { x: 48, y: 88, s: 1.5, d: 6.2 }, { x: 4, y: 90, s: 2, d: 3.0 },
+  { x: 56, y: 48, s: 1, d: 2.2 }, { x: 30, y: 42, s: 1, d: 5.5 }, { x: 82, y: 58, s: 1, d: 4.8 },
+];
+
 const projects = [
   { title: "Lake House 01", type: "spatial" as const, meta: "Residential · 2026", image: spatialOne, shape: "wide", width: 1600, height: 1008 },
   { title: "Northline Editions", type: "visual" as const, meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
@@ -35,6 +44,20 @@ const projects = [
   { title: "Nocturne Hotel", type: "spatial" as const, meta: "Hospitality · 2025", image: spatialThree, shape: "wide", width: 1600, height: 1008 },
   { title: "Atmospheres 03", type: "visual" as const, meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
+
+function GlowDots() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {glowDots.map((dot, i) => (
+        <span
+          key={i}
+          className="glow-dot absolute rounded-full bg-primary"
+          style={{ left: `${dot.x}%`, top: `${dot.y}%`, width: `${dot.s * 0.25}rem`, height: `${dot.s * 0.25}rem`, animationDelay: `${dot.d}s` }}
+        />
+      ))}
+    </div>
+  );
+}
 
 function Portfolio() {
   const [filter, setFilter] = useState<Filter>("all");
@@ -154,10 +177,11 @@ function Portfolio() {
             </div>
             <div className="mt-14 border-y border-border py-8">
               <p className="text-[10px] uppercase tracking-[0.22em] text-primary">Education</p>
-              <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">Interior · Graphic Design</p>
+              <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">BS Interior Design</p>
+              <p className="mt-2 text-[10px] font-light uppercase tracking-[0.2em] text-muted-foreground">Expected graduation · 2027</p>
             </div>
             <dl className="mt-8 grid grid-cols-2 gap-8 text-[10px] uppercase tracking-[0.18em]">
-              <div><dt className="text-muted-foreground">Based</dt><dd className="mt-2 text-foreground">London · Worldwide</dd></div>
+              <div><dt className="text-muted-foreground">Based</dt><dd className="mt-2 text-foreground">Lahore, Pakistan</dd></div>
               <div><dt className="text-muted-foreground">Focus</dt><dd className="mt-2 text-foreground">Space · Identity</dd></div>
             </dl>
           </div>
@@ -174,7 +198,7 @@ function Portfolio() {
         </div>
         <div className="mx-auto mt-20 flex w-full max-w-[1600px] flex-col gap-7 border-t border-border pt-7 text-[10px] uppercase tracking-[0.2em] sm:flex-row sm:items-center sm:justify-between">
           <p className="text-muted-foreground">© 2026 Hadeera Tariq</p>
-          <div className="flex gap-7"><a href="https://behance.net" target="_blank" rel="noreferrer" className="hover:text-primary">Behance</a><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-primary">LinkedIn</a><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-primary">Instagram</a></div>
+          <div className="flex gap-7"><a href="https://www.linkedin.com/in/hadeera-tariq-5aa139359" target="_blank" rel="noreferrer" className="hover:text-primary">LinkedIn</a></div>
         </div>
       </footer>
 
