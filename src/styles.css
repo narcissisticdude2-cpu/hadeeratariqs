@@ -53,6 +53,7 @@
   --surface: oklch(0.225 0.012 250);
   --surface-strong: oklch(0.245 0.014 250 / 0.82);
   --ink-soft: oklch(0.8 0.014 245);
+  --ambient-glow: oklch(0.79 0.055 235 / 0.16);
 }
 
 @layer base {
@@ -75,6 +76,22 @@
 @keyframes quiet-rise {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ambient-drift {
+  0%, 100% { transform: translate3d(-8%, -5%, 0) scale(0.95); opacity: 0.45; }
+  50% { transform: translate3d(16%, 10%, 0) scale(1.12); opacity: 0.8; }
+}
+
+.ambient-glow {
+  width: 64rem;
+  height: 64rem;
+  top: -24rem;
+  left: -18rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--ambient-glow) 0%, transparent 66%);
+  filter: blur(18px);
+  animation: ambient-drift 14s ease-in-out infinite;
 }
 
 @utility animate-quiet-rise {
