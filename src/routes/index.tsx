@@ -45,6 +45,20 @@ const projects = [
   { title: "Atmospheres 03", type: "visual" as const, meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
 
+function GlowDots() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {glowDots.map((dot, i) => (
+        <span
+          key={i}
+          className="glow-dot absolute rounded-full bg-primary"
+          style={{ left: `${dot.x}%`, top: `${dot.y}%`, width: `${dot.s * 0.25}rem`, height: `${dot.s * 0.25}rem`, animationDelay: `${dot.d}s` }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function Portfolio() {
   const [filter, setFilter] = useState<Filter>("all");
   const [scrolled, setScrolled] = useState(false);
