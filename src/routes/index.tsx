@@ -175,7 +175,7 @@ function Portfolio() {
         </div>
         <div className="mx-auto mt-20 flex w-full max-w-[1600px] flex-col gap-7 border-t border-border pt-7 text-[10px] uppercase tracking-[0.2em] sm:flex-row sm:items-center sm:justify-between">
           <p className="text-muted-foreground">© 2026 Hadeera Tariq</p>
-          <div className="flex gap-7"><a href="https://behance.net" target="_blank" rel="noreferrer" className="hover:text-primary">Behance</a><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-primary">LinkedIn</a><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-primary">Instagram</a></div>
+          <div className="flex gap-7"><a href="https://www.linkedin.com/in/hadeera-tariq-5aa139359" target="_blank" rel="noreferrer" className="hover:text-primary">LinkedIn</a></div>
         </div>
       </footer>
 
