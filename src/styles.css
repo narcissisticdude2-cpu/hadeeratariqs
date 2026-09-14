@@ -54,6 +54,8 @@
   --surface-strong: oklch(0.245 0.014 250 / 0.82);
   --ink-soft: oklch(0.8 0.014 245);
   --ambient-glow: oklch(0.79 0.055 235 / 0.16);
+  --dot-glow: oklch(0.79 0.055 235 / 0.72);
+  --cursor-glow: oklch(0.79 0.055 235 / 0.42);
 }
 
 @layer base {
@@ -83,6 +85,13 @@
   50% { transform: translate3d(16%, 10%, 0) scale(1.12); opacity: 0.8; }
 }
 
+@keyframes dot-drift {
+  0%, 100% { opacity: 0; transform: translate3d(-0.35rem, 0.3rem, 0) scale(0.65); }
+  35% { opacity: 0.75; }
+  55% { opacity: 0.35; transform: translate3d(0.55rem, -0.65rem, 0) scale(1.15); }
+  75% { opacity: 0.85; }
+}
+
 .ambient-glow {
   width: 64rem;
   height: 64rem;
@@ -92,6 +101,16 @@
   background: radial-gradient(circle, var(--ambient-glow) 0%, transparent 66%);
   filter: blur(18px);
   animation: ambient-drift 14s ease-in-out infinite;
+}
+
+.glow-dot {
+  opacity: 0;
+  box-shadow: 0 0 0.75rem 0.2rem var(--dot-glow);
+  animation: dot-drift 7s ease-in-out infinite;
+}
+
+body.custom-cursor div[aria-hidden="true"][class*="mix-blend-difference"] {
+  box-shadow: 0 0 1rem 0.25rem var(--cursor-glow);
 }
 
 @utility animate-quiet-rise {

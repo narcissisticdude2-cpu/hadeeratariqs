@@ -106,6 +106,7 @@ function Portfolio() {
 
       <section id="top" className="relative isolate flex min-h-[92svh] items-center overflow-hidden px-5 pt-24 sm:px-8 lg:px-12">
         <div aria-hidden="true" className="ambient-glow pointer-events-none absolute inset-0 -z-10" />
+        <GlowDots />
         <div className="mx-auto w-full max-w-[1600px]">
           <p className="mb-8 animate-quiet-rise text-[10px] font-medium uppercase tracking-[0.3em] text-primary sm:mb-12">Interior Architecture · Visual Identity</p>
           <h1 className="max-w-[1300px] animate-quiet-rise text-balance font-sans text-[clamp(3.25rem,8vw,8rem)] font-normal leading-[0.92] tracking-normal" style={{ animationDelay: "100ms" }}>
@@ -128,7 +129,8 @@ function Portfolio() {
         <Gateway href="#work" image={visualOne} number="02" title="Visual Systems" detail="Identity · Editorial · Campaigns" onSelect={() => setFilter("visual")} />
       </section>
 
-      <section id="work" className="px-5 py-28 sm:px-8 sm:py-40 lg:px-12">
+      <section id="work" className="relative isolate overflow-hidden px-5 py-28 sm:px-8 sm:py-40 lg:px-12">
+        <GlowDots />
         <div className="mx-auto max-w-[1600px]">
           <div className="mb-14 grid gap-10 lg:mb-24 lg:grid-cols-[1fr_2fr] lg:items-end">
             <div>
@@ -188,7 +190,8 @@ function Portfolio() {
         </div>
       </section>
 
-      <footer id="contact" className="flex min-h-screen flex-col justify-between px-5 py-24 sm:px-8 lg:px-12">
+      <footer id="contact" className="relative isolate flex min-h-screen flex-col justify-between overflow-hidden px-5 py-24 sm:px-8 lg:px-12">
+        <GlowDots />
         <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-center">
           <p className="mb-8 text-[10px] uppercase tracking-[0.25em] text-primary">New projects · Collaborations · Commissions</p>
           <h2 className="font-sans text-[clamp(3.25rem,8vw,8rem)] font-normal leading-[0.92] tracking-normal">Let’s<br /><span>Collaborate.</span></h2>
