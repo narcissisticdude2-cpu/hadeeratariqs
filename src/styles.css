@@ -109,7 +109,7 @@
   animation: dot-drift 7s ease-in-out infinite;
 }
 
-body.custom-cursor > div[aria-hidden="true"][class*="mix-blend-difference"] {
+body.custom-cursor div[aria-hidden="true"][class*="mix-blend-difference"] {
   box-shadow: 0 0 1rem 0.25rem var(--cursor-glow);
 }
 
