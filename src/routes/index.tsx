@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import spatialOne from "@/assets/spatial-01.jpg";
 import spatialTwo from "@/assets/spatial-02.jpg";
 import spatialThree from "@/assets/spatial-03.jpg";
-import portrait from "@/assets/studio-portrait.jpg";
 import visualOne from "@/assets/visual-01.jpg";
 import visualTwo from "@/assets/visual-02.jpg";
 import visualThree from "@/assets/visual-03.jpg";
@@ -54,6 +53,51 @@ function GlowDots() {
           className="glow-dot absolute rounded-full bg-primary"
           style={{ left: `${dot.x}%`, top: `${dot.y}%`, width: `${dot.s * 0.25}rem`, height: `${dot.s * 0.25}rem`, animationDelay: `${dot.d}s` }}
         />
+      ))}
+    </div>
+  );
+}
+
+const skills = [
+  "3ds Max",
+  "V-Ray",
+  "AutoCAD",
+  "SketchUp",
+  "Photoshop",
+  "Creative Suite",
+  "Illustrator",
+];
+
+function SkillsList() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className="space-y-3 sm:space-y-4">
+      {skills.map((skill, i) => (
+        <div
+          key={skill}
+          className={`font-display text-2xl sm:text-3xl lg:text-4xl transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${visible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"}`}
+          style={{ transitionDelay: `${i * 50}ms` }}
+        >
+          {skill}
+        </div>
       ))}
     </div>
   );
@@ -166,9 +210,6 @@ function Portfolio() {
       </section>
 
       <section id="profile" className="grid min-h-screen lg:grid-cols-2">
-        <div className="min-h-[70svh] overflow-hidden lg:min-h-screen">
-          <img src={portrait} alt="Hadeera Tariq in her design studio" width={1104} height={1408} loading="lazy" className="h-full w-full object-cover grayscale-[18%]" />
-        </div>
         <div className="flex items-center bg-secondary px-5 py-24 sm:px-12 lg:px-[10%]">
           <div className="max-w-xl">
             <p className="mb-10 text-[10px] uppercase tracking-[0.25em] text-primary">Profile / Method</p>
@@ -188,13 +229,19 @@ function Portfolio() {
             </dl>
           </div>
         </div>
+        <div className="flex items-center bg-surface px-5 py-24 sm:px-12 lg:px-[10%]">
+          <div className="w-full max-w-xl">
+            <p className="mb-10 text-[10px] uppercase tracking-[0.25em] text-primary">Capabilities</p>
+            <SkillsList />
+          </div>
+        </div>
       </section>
 
       <footer id="contact" className="relative isolate flex min-h-screen flex-col justify-between overflow-hidden px-5 py-24 sm:px-8 lg:px-12">
         <GlowDots />
         <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-center">
           <p className="mb-8 text-[10px] uppercase tracking-[0.25em] text-primary">New projects · Collaborations · Commissions</p>
-          <h2 className="font-sans text-[clamp(3.25rem,8vw,8rem)] font-normal leading-[0.92] tracking-normal">Let’s<br /><span>Collaborate.</span></h2>
+          <h2 className="font-sans text-[clamp(3.25rem,8vw,8rem)] font-normal leading-[0.92] tracking-normal">Let’s Collaborate.</h2>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hadeeratariq@gmail.com" target="_blank" rel="noreferrer" className="mt-16 inline-flex w-fit items-center gap-4 border-b border-border pb-3 text-xl font-light transition-colors hover:border-primary hover:text-primary sm:text-3xl">
             hadeeratariq@gmail.com <MoveUpRight className="h-6 w-6" strokeWidth={1.25} />
           </a>
