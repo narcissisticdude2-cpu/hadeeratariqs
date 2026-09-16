@@ -119,12 +119,7 @@ function SkillsList() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
+      ([entry]) => setVisible(Boolean(entry?.isIntersecting)),
       { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
     );
     observer.observe(el);
@@ -132,12 +127,12 @@ function SkillsList() {
   }, []);
 
   return (
-    <div ref={ref} className="space-y-3 sm:space-y-4">
+    <div ref={ref} className="space-y-3 pl-4 sm:space-y-4 sm:pl-10 lg:pl-16">
       {skills.map((skill, i) => (
         <div
           key={skill}
-          className={`font-display text-2xl sm:text-3xl lg:text-4xl transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${visible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"}`}
-          style={{ transitionDelay: `${i * 50}ms` }}
+          className={`font-sans text-2xl font-light transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] sm:text-3xl lg:text-4xl ${visible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"}`}
+          style={{ transitionDelay: `${(visible ? i : skills.length - 1 - i) * 50}ms` }}
         >
           {skill}
         </div>
