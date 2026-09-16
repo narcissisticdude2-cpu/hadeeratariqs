@@ -45,6 +45,48 @@ const projects = [
   { title: "Atmospheres 03", type: "visual" as const, meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
 
+const spatialImages = [
+  { image: spatialOne, width: 1600, height: 1008 },
+  { image: spatialTwo, width: 1600, height: 1008 },
+  { image: spatialThree, width: 1600, height: 1008 },
+];
+
+const visualImages = [
+  { image: visualOne, width: 1104, height: 1408 },
+  { image: visualTwo, width: 1200, height: 1200 },
+  { image: visualThree, width: 1104, height: 1408 },
+];
+
+function buildDetail(project: (typeof projects)[number]): ProjectDetail {
+  const pool = project.type === "spatial" ? spatialImages : visualImages;
+  const pick = (i: number) => pool[i % pool.length]!;
+
+  const sections =
+    project.type === "spatial"
+      ? [
+          { label: "01 · Floor Plan", heading: "Plan and circulation", note: "The CAD plan sets the spine of the project: sightlines, thresholds, and the sequence of rooms are resolved before any surface is chosen.", ...pick(0) },
+          { label: "02 · Mood Board", heading: "Material atmosphere", note: "Stone, brushed metal, and warm timber are balanced against cool daylight to keep the palette quiet but tactile.", ...pick(1) },
+          { label: "03 · Render", heading: "Daylight study", note: "3ds Max and V-Ray renders test how light lands across the day, tuning reflectance and contrast in the main volume.", ...pick(2) },
+          { label: "04 · Render", heading: "Detail and joinery", note: "Close studies of joinery, edges, and shadow gaps confirm the proportions hold at human scale.", ...pick(0) },
+        ]
+      : [
+          { label: "01 · Concept", heading: "Grid and structure", note: "The system begins as a typographic grid — column rhythm, margins, and scale steps that hold across every format.", ...pick(0) },
+          { label: "02 · Mood Board", heading: "Visual references", note: "Reference images, textures, and print stock set the tone before the identity is drawn.", ...pick(1) },
+          { label: "03 · Layouts", heading: "Editorial application", note: "Spreads and posters stress-test the system with dense and sparse content alike.", ...pick(2) },
+          { label: "04 · Collateral", heading: "Applied identity", note: "Signage, print collateral, and digital surfaces carry the same proportions as the spatial work.", ...pick(0) },
+        ];
+
+  return {
+    title: project.title,
+    meta: project.meta,
+    overview:
+      project.type === "spatial"
+        ? "A spatial study developed from plan to render — resolving circulation, material weight, and light before the room is dressed."
+        : "A visual system built from a strict grid — typography, imagery, and print collateral tuned into one consistent voice.",
+    sections,
+  };
+}
+
 function GlowDots() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
