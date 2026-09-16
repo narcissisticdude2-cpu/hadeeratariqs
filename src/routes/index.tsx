@@ -294,6 +294,8 @@ function Portfolio() {
       <a href="#top" aria-label="Back to top" className={`fixed bottom-5 right-5 z-40 grid h-11 w-11 place-items-center border border-border bg-surface-strong text-foreground backdrop-blur-xl transition-all duration-500 hover:border-primary hover:text-primary sm:bottom-8 sm:right-8 ${scrolled ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}>
         <ArrowUp className="h-4 w-4" strokeWidth={1.25} />
       </a>
+
+      <ProjectDrawer project={active} onClose={() => setActive(null)} />
     </main>
   );
 }
