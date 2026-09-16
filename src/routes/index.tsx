@@ -8,6 +8,7 @@ import spatialThree from "@/assets/spatial-03.jpg";
 import visualOne from "@/assets/visual-01.jpg";
 import visualTwo from "@/assets/visual-02.jpg";
 import visualThree from "@/assets/visual-03.jpg";
+import { ProjectDrawer, type ProjectDetail } from "@/components/project-drawer";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -44,6 +45,48 @@ const projects = [
   { title: "Atmospheres 03", type: "visual" as const, meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
 
+const spatialImages = [
+  { image: spatialOne, width: 1600, height: 1008 },
+  { image: spatialTwo, width: 1600, height: 1008 },
+  { image: spatialThree, width: 1600, height: 1008 },
+];
+
+const visualImages = [
+  { image: visualOne, width: 1104, height: 1408 },
+  { image: visualTwo, width: 1200, height: 1200 },
+  { image: visualThree, width: 1104, height: 1408 },
+];
+
+function buildDetail(project: (typeof projects)[number]): ProjectDetail {
+  const pool = project.type === "spatial" ? spatialImages : visualImages;
+  const pick = (i: number) => pool[i % pool.length]!;
+
+  const sections =
+    project.type === "spatial"
+      ? [
+          { label: "01 · Floor Plan", heading: "Plan and circulation", note: "The CAD plan sets the spine of the project: sightlines, thresholds, and the sequence of rooms are resolved before any surface is chosen.", ...pick(0) },
+          { label: "02 · Mood Board", heading: "Material atmosphere", note: "Stone, brushed metal, and warm timber are balanced against cool daylight to keep the palette quiet but tactile.", ...pick(1) },
+          { label: "03 · Render", heading: "Daylight study", note: "3ds Max and V-Ray renders test how light lands across the day, tuning reflectance and contrast in the main volume.", ...pick(2) },
+          { label: "04 · Render", heading: "Detail and joinery", note: "Close studies of joinery, edges, and shadow gaps confirm the proportions hold at human scale.", ...pick(0) },
+        ]
+      : [
+          { label: "01 · Concept", heading: "Grid and structure", note: "The system begins as a typographic grid — column rhythm, margins, and scale steps that hold across every format.", ...pick(0) },
+          { label: "02 · Mood Board", heading: "Visual references", note: "Reference images, textures, and print stock set the tone before the identity is drawn.", ...pick(1) },
+          { label: "03 · Layouts", heading: "Editorial application", note: "Spreads and posters stress-test the system with dense and sparse content alike.", ...pick(2) },
+          { label: "04 · Collateral", heading: "Applied identity", note: "Signage, print collateral, and digital surfaces carry the same proportions as the spatial work.", ...pick(0) },
+        ];
+
+  return {
+    title: project.title,
+    meta: project.meta,
+    overview:
+      project.type === "spatial"
+        ? "A spatial study developed from plan to render — resolving circulation, material weight, and light before the room is dressed."
+        : "A visual system built from a strict grid — typography, imagery, and print collateral tuned into one consistent voice.",
+    sections,
+  };
+}
+
 function GlowDots() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -76,12 +119,7 @@ function SkillsList() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
+      ([entry]) => setVisible(Boolean(entry?.isIntersecting)),
       { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
     );
     observer.observe(el);
@@ -89,12 +127,12 @@ function SkillsList() {
   }, []);
 
   return (
-    <div ref={ref} className="space-y-3 sm:space-y-4">
+    <div ref={ref} className="space-y-3 pl-4 sm:space-y-4 sm:pl-10 lg:pl-16">
       {skills.map((skill, i) => (
         <div
           key={skill}
-          className={`font-display text-2xl sm:text-3xl lg:text-4xl transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] ${visible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"}`}
-          style={{ transitionDelay: `${i * 50}ms` }}
+          className={`font-sans text-2xl font-light transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)] sm:text-3xl lg:text-4xl ${visible ? "translate-x-0 opacity-100" : "translate-x-16 opacity-0"}`}
+          style={{ transitionDelay: `${(visible ? i : skills.length - 1 - i) * 50}ms` }}
         >
           {skill}
         </div>
@@ -105,6 +143,7 @@ function SkillsList() {
 
 function Portfolio() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [active, setActive] = useState<ProjectDetail | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [cursor, setCursor] = useState({ x: -40, y: -40, active: false, visible: false });
 
@@ -192,7 +231,7 @@ function Portfolio() {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
             {visibleProjects.map((project, index) => (
-              <article key={project.title} data-cursor className={`group relative overflow-hidden bg-surface ${project.type === "spatial" ? "lg:col-span-8" : "lg:col-span-4"} ${project.shape === "wide" ? "aspect-[16/10]" : project.shape === "square" ? "aspect-square" : "aspect-[4/5]"} ${filter === "all" && index === 2 ? "lg:col-start-5" : ""}`}>
+              <article key={project.title} data-cursor role="button" tabIndex={0} onClick={() => setActive(buildDetail(project))} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActive(buildDetail(project)); } }} className={`group relative cursor-pointer overflow-hidden bg-surface ${project.type === "spatial" ? "lg:col-span-8" : "lg:col-span-4"} ${project.shape === "wide" ? "aspect-[16/10]" : project.shape === "square" ? "aspect-square" : "aspect-[4/5]"} ${filter === "all" && index === 2 ? "lg:col-start-5" : ""}`}>
                 <img src={project.image} alt={`${project.title} — ${project.meta}`} width={project.width} height={project.height} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.045]" />
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/95 via-background/10 to-transparent p-5 opacity-100 transition-opacity duration-500 md:p-7 lg:opacity-0 lg:group-hover:opacity-100">
                   <div className="w-full translate-y-0 transition-transform duration-500 lg:translate-y-4 lg:group-hover:translate-y-0">
@@ -255,6 +294,8 @@ function Portfolio() {
       <a href="#top" aria-label="Back to top" className={`fixed bottom-5 right-5 z-40 grid h-11 w-11 place-items-center border border-border bg-surface-strong text-foreground backdrop-blur-xl transition-all duration-500 hover:border-primary hover:text-primary sm:bottom-8 sm:right-8 ${scrolled ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}>
         <ArrowUp className="h-4 w-4" strokeWidth={1.25} />
       </a>
+
+      <ProjectDrawer project={active} onClose={() => setActive(null)} />
     </main>
   );
 }
