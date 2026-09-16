@@ -2,12 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import landscapeBenchAsset from "@/assets/landscape-bench-detail.asset.json";
+import landscapeBubbleAsset from "@/assets/landscape-bubble.asset.json";
+import landscapePavingAsset from "@/assets/landscape-paving.asset.json";
+import landscapePlanAsset from "@/assets/landscape-plan.asset.json";
+import landscapeCourtAsset from "@/assets/landscape-render-court.asset.json";
+import landscapeFrontAsset from "@/assets/landscape-render-front.asset.json";
+import landscapeSeatingAsset from "@/assets/landscape-seating.asset.json";
+import landscapeSiteAsset from "@/assets/landscape-site.asset.json";
 import spatialOne from "@/assets/spatial-01.jpg";
 import spatialTwo from "@/assets/spatial-02.jpg";
 import spatialThree from "@/assets/spatial-03.jpg";
 import visualOne from "@/assets/visual-01.jpg";
 import visualTwo from "@/assets/visual-02.jpg";
 import visualThree from "@/assets/visual-03.jpg";
+
 import { ProjectDrawer, type ProjectDetail } from "@/components/project-drawer";
 import { Button } from "@/components/ui/button";
 
