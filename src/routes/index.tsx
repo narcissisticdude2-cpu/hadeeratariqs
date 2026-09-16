@@ -143,6 +143,7 @@ function SkillsList() {
 
 function Portfolio() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [active, setActive] = useState<ProjectDetail | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [cursor, setCursor] = useState({ x: -40, y: -40, active: false, visible: false });
 
