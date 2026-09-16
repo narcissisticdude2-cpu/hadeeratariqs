@@ -8,6 +8,7 @@ import spatialThree from "@/assets/spatial-03.jpg";
 import visualOne from "@/assets/visual-01.jpg";
 import visualTwo from "@/assets/visual-02.jpg";
 import visualThree from "@/assets/visual-03.jpg";
+import { ProjectDrawer, type ProjectDetail } from "@/components/project-drawer";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
