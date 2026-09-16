@@ -45,14 +45,100 @@ const glowDots = [
   { x: 56, y: 48, s: 1, d: 2.2 }, { x: 30, y: 42, s: 1, d: 5.5 }, { x: 82, y: 58, s: 1, d: 4.8 },
 ];
 
-const projects = [
-  { title: "Lake House 01", type: "spatial" as const, meta: "Residential · 2026", image: spatialOne, shape: "wide", width: 1600, height: 1008 },
-  { title: "Northline Editions", type: "visual" as const, meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
-  { title: "House of Stillness", type: "spatial" as const, meta: "Residential · 2025", image: spatialTwo, shape: "wide", width: 1600, height: 1008 },
-  { title: "Axis Archive", type: "visual" as const, meta: "Editorial · 2025", image: visualTwo, shape: "square", width: 1200, height: 1200 },
-  { title: "Nocturne Hotel", type: "spatial" as const, meta: "Hospitality · 2025", image: spatialThree, shape: "wide", width: 1600, height: 1008 },
-  { title: "Atmospheres 03", type: "visual" as const, meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
+type Project = {
+  title: string;
+  type: "spatial" | "visual";
+  meta: string;
+  image: string;
+  shape: "wide" | "square" | "portrait";
+  width: number;
+  height: number;
+  detail?: ProjectDetail;
+};
+
+const landscapeDetail: ProjectDetail = {
+  title: "Landscape Design",
+  meta: "Landscape · Department Courtyard · 2026",
+  overview:
+    "A landscape intervention for a department courtyard in Lahore — turning a bare, sun-bleached forecourt into a shaded, planted setting with a curved seating spine, soft lawn, and a clear stone path to the entrance.",
+  sections: [
+    {
+      label: "01 · Site Condition",
+      heading: "The existing forecourt",
+      note: "The starting point: patchy grass, exposed service lines, and no shade or seating. Photographs and measurements of the site set the constraints for everything that follows.",
+      image: landscapeSiteAsset.url,
+      width: 1600,
+      height: 1204,
+    },
+    {
+      label: "02 · Bubble Diagram",
+      heading: "Zoning and circulation",
+      note: "A hand-drawn bubble diagram resolves the zones first — planting beds, the seating pocket, and two curved paths that guide movement toward the department building.",
+      image: landscapeBubbleAsset.url,
+      width: 1755,
+      height: 1240,
+    },
+    {
+      label: "03 · Site Plan",
+      heading: "Dimensioned CAD plan",
+      note: "The AutoCAD plan fixes the geometry: the 24'-11\" planter edge, the curved bench line, paving widths, and the setbacks that keep circulation clear of the façade.",
+      image: landscapePlanAsset.url,
+      width: 869,
+      height: 783,
+    },
+    {
+      label: "04 · Render",
+      heading: "Entrance approach",
+      note: "The front render tests the proposal against the real façade — a mature shade tree, layered planting along the boundary wall, and a paved walkway leading straight to the porch.",
+      image: landscapeFrontAsset.url,
+      width: 1920,
+      height: 1452,
+    },
+    {
+      label: "05 · Render",
+      heading: "Shaded courtyard",
+      note: "A late-afternoon study of the courtyard: dappled shade across the lawn, the curved bench tucked against the raised planter, and a hedge line softening the boundary.",
+      image: landscapeCourtAsset.url,
+      width: 1920,
+      height: 1562,
+    },
+    {
+      label: "06 · Seating",
+      heading: "The curved bench spine",
+      note: "The serpentine bench follows the planter wall, giving students informal seating that faces the lawn while keeping the walking route uninterrupted.",
+      image: landscapeSeatingAsset.url,
+      width: 1600,
+      height: 898,
+    },
+    {
+      label: "07 · Detail",
+      heading: "Materials up close",
+      note: "Timber slats on a dark steel frame against exposed-aggregate concrete — warm against cool, with ferns and palms packed behind the seat back.",
+      image: landscapeBenchAsset.url,
+      width: 1482,
+      height: 1062,
+    },
+    {
+      label: "08 · Paving",
+      heading: "Stone and pebble path",
+      note: "Large stone slabs set in pebble joints keep drainage open and give the path a quiet rhythm where it meets the planting bed and the lawn edge.",
+      image: landscapePavingAsset.url,
+      width: 1365,
+      height: 1152,
+    },
+  ],
+};
+
+const projects: Project[] = [
+  { title: "Landscape Design", type: "spatial", meta: "Landscape · 2026", image: landscapeFrontAsset.url, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
+  { title: "Lake House 01", type: "spatial", meta: "Residential · 2026", image: spatialOne, shape: "wide", width: 1600, height: 1008 },
+  { title: "Northline Editions", type: "visual", meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
+  { title: "House of Stillness", type: "spatial", meta: "Residential · 2025", image: spatialTwo, shape: "wide", width: 1600, height: 1008 },
+  { title: "Axis Archive", type: "visual", meta: "Editorial · 2025", image: visualTwo, shape: "square", width: 1200, height: 1200 },
+  { title: "Nocturne Hotel", type: "spatial", meta: "Hospitality · 2025", image: spatialThree, shape: "wide", width: 1600, height: 1008 },
+  { title: "Atmospheres 03", type: "visual", meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
+
 
 const spatialImages = [
   { image: spatialOne, width: 1600, height: 1008 },
