@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import heroInterior from "@/assets/hero-interior.jpg";
 import landscapeBenchAsset from "@/assets/landscape-bench-detail.asset.json";
 import landscapeBubbleAsset from "@/assets/landscape-bubble.asset.json";
 import landscapePavingAsset from "@/assets/landscape-paving.asset.json";
@@ -285,6 +286,8 @@ function Portfolio() {
       </header>
 
       <section id="top" className="relative isolate flex min-h-[92svh] items-center overflow-hidden px-5 pt-24 sm:px-8 lg:px-12">
+        <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroInterior})`, zIndex: -30 }} />
+        <div aria-hidden="true" className="absolute inset-0 bg-background/85" style={{ zIndex: -20 }} />
         <div aria-hidden="true" className="ambient-glow pointer-events-none absolute inset-0 -z-10" />
         <GlowDots />
         <div className="mx-auto w-full max-w-[1600px]">
