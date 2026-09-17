@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import heroInterior from "@/assets/hero-interior.jpg";
 import landscapeBenchAsset from "@/assets/landscape-bench-detail.asset.json";
 import landscapeBubbleAsset from "@/assets/landscape-bubble.asset.json";
 import landscapePavingAsset from "@/assets/landscape-paving.asset.json";
