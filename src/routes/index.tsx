@@ -153,8 +153,10 @@ const visualImages = [
 ];
 
 function buildDetail(project: (typeof projects)[number]): ProjectDetail {
+  if (project.detail) return project.detail;
   const pool = project.type === "spatial" ? spatialImages : visualImages;
   const pick = (i: number) => pool[i % pool.length]!;
+
 
   const sections =
     project.type === "spatial"
