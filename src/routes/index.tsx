@@ -349,20 +349,25 @@ function Portfolio() {
         <div className="flex items-center bg-secondary px-5 py-24 sm:px-12 lg:px-[10%]">
           <div className="max-w-xl">
             <p className="mb-10 text-[10px] uppercase tracking-[0.25em] text-primary">Profile / Method</p>
-            <h2 className="text-balance font-sans text-[clamp(1.75rem,3.5vw,3.5rem)] font-normal leading-[1.1] tracking-normal">Ideas gain clarity when every dimension is considered.</h2>
+            <h2 className="text-balance font-sans text-[clamp(1.25rem,2.5vw,2.25rem)] font-normal leading-[1.15] tracking-normal">Ideas gain clarity when every dimension is considered.</h2>
             <div className="mt-12 grid gap-7 text-sm font-light leading-[1.8] text-ink-soft sm:grid-cols-2">
               <p>My practice moves between the room and the page. Spatial awareness gives graphic systems rhythm, depth, and proportion.</p>
               <p>In return, visual storytelling brings interiors a stronger sense of sequence, identity, and emotional resonance.</p>
             </div>
-            <div className="mt-14 border-y border-border py-8">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-primary">Education</p>
-              <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">BS Interior Design</p>
-              <p className="mt-2 text-[10px] font-light uppercase tracking-[0.2em] text-muted-foreground">Expected graduation · 2027</p>
+            <div className="mt-14 space-y-10 border-y border-border py-10">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-primary">Education</p>
+                <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">BS Interior Design</p>
+                <p className="mt-2 text-[10px] font-light uppercase tracking-[0.2em] text-muted-foreground">Expected graduation · 2027</p>
+                <p className="mt-3 text-sm font-light text-foreground/80">University of Home Economics, Lahore</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-primary">Experience</p>
+                <p className="mt-4 text-2xl font-normal text-foreground sm:text-3xl">Interior Designer Intern</p>
+                <p className="mt-2 text-sm font-light text-foreground/80">Cielo Casa, Lahore</p>
+                <p className="mt-1 text-[10px] font-light uppercase tracking-[0.2em] text-muted-foreground">Jul – Aug 2025</p>
+              </div>
             </div>
-            <dl className="mt-8 grid grid-cols-2 gap-8 text-[10px] uppercase tracking-[0.18em]">
-              <div><dt className="text-muted-foreground">Based</dt><dd className="mt-2 text-foreground">Lahore, Pakistan</dd></div>
-              <div><dt className="text-muted-foreground">Focus</dt><dd className="mt-2 text-foreground">Space · Identity</dd></div>
-            </dl>
           </div>
         </div>
         <div className="flex items-center bg-surface px-5 py-24 sm:px-12 lg:px-[10%]">
