@@ -592,15 +592,52 @@ it disappears on its own once hosting moves. No code change needed.
 
 ---
 
-## 6. Hosting
+## 6. Hosting — Vercel
 
-Build currently targets **Cloudflare Workers** (`cloudflare-module` Nitro preset),
-so Cloudflare is the lowest-friction destination. Vercel and Netlify both have
-TanStack Start presets too.
+**Decided 2026-09-21: Vercel.** `vite.config.ts` defaults `NITRO_PRESET` to
+`vercel`, so `npm run build` emits Build Output API v3 into `.vercel/output`:
 
-Because **nothing fetches at runtime**, full static prerender is also viable —
-that would allow Cloudflare Pages / Netlify / GitHub Pages with no server at all.
-Decision pending.
+```
+.vercel/output/config.json                    routes + cache headers
+.vercel/output/static/assets/…                15 fingerprinted images + JS/CSS
+.vercel/output/functions/__server.func/       the SSR handler
+```
+
+The generated `config.json` already serves `/assets/*` as
+`public, max-age=31536000, immutable`, falls through to `filesystem`, then routes
+everything else to `/__server`. **No `vercel.json` is needed** — do not add one
+unless something specific requires it, since it would override this.
+
+`.vercel` is gitignored.
+
+### Deploying
+
+The repo is linked through Vercel's GitHub integration, so pushes to `main`
+deploy on their own. If it ever needs re-linking: Vercel dashboard → Add New →
+Project → import `narcissisticdude2-cpu/hadeeratariqs` → **Framework Preset:
+Other**, build command `npm run build`, no output directory (Vercel detects
+`.vercel/output`). Leave everything else default — there are no env vars.
+
+### `npm run preview` is broken under this preset
+
+Expected, not a bug. The `vercel` preset emits deployment artifacts rather than a
+runnable server, so `vite preview` fails looking for `dist/server/server.js`.
+To smoke-test a production build locally:
+
+```sh
+NITRO_PRESET=node-server npm run build
+node .output/server/index.mjs        # http://localhost:3000
+```
+
+That path was verified on 2026-09-21: SSR returned 200 and the drawer loaded all
+8 landscape images from fingerprinted URLs with zero network failures. For
+routing-accurate previews use `vercel dev`.
+
+### Other presets, if this is ever revisited
+
+`cloudflare-module` (the previous target), `netlify`, `node-server`. Because
+**nothing fetches at runtime**, full static prerender also remains viable, which
+would allow any static host with no server at all.
 
 ---
 
@@ -664,6 +701,15 @@ is pre-existing and cosmetic: 86 `prettier/prettier` errors (the Lovable-authore
 `react-refresh/only-export-components` warnings. `npm run format` clears all 86 in
 one shot, but it rewrites `index.tsx` substantially — **left undone deliberately**
 so the migration diff stays readable. Worth doing as its own commit.
+
+### Lovable disconnection
+
+Removing the code was only half of it. The remaining step is **manual and outside
+the repo**: in the Lovable project
+(`lovable.dev/projects/5d5ddf6f-8398-4e11-8f4b-6b75f5872c39`) → Settings →
+GitHub → Disconnect, otherwise pushes to `main` keep syncing into Lovable's
+editor. The `hadeeratariqs.lovable.app` deployment also keeps serving until it
+is taken down there.
 
 ### Notes for next session
 
