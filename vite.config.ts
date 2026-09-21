@@ -9,11 +9,12 @@ import tsConfigPaths from "vite-tsconfig-paths";
 
 const srcDir = fileURLToPath(new URL("./src", import.meta.url));
 
-// Deployment target for the SSR build. `cloudflare-module` emits a Cloudflare
-// Worker, which is what this site was previously deployed as. To move hosts,
-// change this to the matching nitro preset — e.g. "vercel", "netlify",
-// "node-server" — or set NITRO_PRESET in the build environment.
-const NITRO_PRESET = process.env["NITRO_PRESET"] ?? "cloudflare-module";
+// Deployment target for the SSR build. The `vercel` preset emits Vercel's
+// Build Output API v3 format into .vercel/output, which Vercel picks up with no
+// further configuration. To move hosts, change this to the matching nitro
+// preset — e.g. "cloudflare-module", "netlify", "node-server" — or set
+// NITRO_PRESET in the build environment.
+const NITRO_PRESET = process.env["NITRO_PRESET"] ?? "vercel";
 
 export default defineConfig(({ command }) => ({
   // Tailwind v4 emits nesting/custom-property syntax that lightningcss handles

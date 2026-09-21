@@ -31,7 +31,7 @@ The dev server starts on Vite's default port (5173), or the next free one.
 | --- | --- |
 | `npm run dev` | Vite dev server with SSR |
 | `npm run build` | Production build via nitro |
-| `npm run preview` | Serve the production build locally |
+| `npm run preview` | Serve a production build — needs a server preset, see below |
 | `npm run lint` | ESLint |
 | `npm run format` | Prettier |
 
@@ -77,16 +77,36 @@ reserved for the monogram, gateway titles, and project titles.
 
 ## Deployment
 
-The production build targets Cloudflare Workers by default. To build for a
-different host, set the matching nitro preset:
+The site is hosted on **Vercel**. `npm run build` emits Vercel's Build Output
+API v3 format into `.vercel/output`, which Vercel consumes with no extra
+configuration — no `vercel.json` is needed. Pushes to `main` deploy
+automatically once the repo is linked.
+
+To build for a different host, set the matching nitro preset:
 
 ```sh
-NITRO_PRESET=vercel npm run build
+NITRO_PRESET=cloudflare-module npm run build
 NITRO_PRESET=netlify npm run build
 NITRO_PRESET=node-server npm run build
 ```
 
 Or change the default in `vite.config.ts`.
+
+### Previewing a production build locally
+
+`npm run preview` does **not** work against the `vercel` preset — that preset
+emits Build Output API files for Vercel to consume, not a runnable server, so
+`vite preview` fails looking for `dist/server/server.js`. Build a real server
+instead:
+
+```sh
+NITRO_PRESET=node-server npm run build
+node .output/server/index.mjs        # http://localhost:3000
+```
+
+On Windows `cmd`, set the variable separately (`set NITRO_PRESET=node-server`)
+or use Git Bash. For a preview that matches Vercel's routing exactly, use
+`vercel dev`.
 
 Nothing on the site fetches data at runtime, so it can also be prerendered to
 fully static output if a serverless host isn't wanted.
