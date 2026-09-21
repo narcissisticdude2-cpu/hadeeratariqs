@@ -1,100 +1,92 @@
-# Studio Vision
+# Hadeera Tariq — Portfolio
 
-Build a premium, high-end professional portfolio for a Multidisciplinary Designer specializing in Interior Design and Graphic Design. The aesthetic must be 'Architectural Minimalist'—sophisticated, spacious, and dark-themed.
+A single-page portfolio for Hadeera Tariq, a multidisciplinary designer working
+across interior architecture and visual identity.
 
+The aesthetic is *architectural minimalist*: a deep graphite ground, mist-white
+type, one ice-blue accent, generous negative space, strict grid alignment, and
+almost no borders. Motion is slow and quiet throughout, and is disabled entirely
+under `prefers-reduced-motion`.
 
+## Stack
 
+- [TanStack Start](https://tanstack.com/start) — SSR React framework, file-based routing
+- Vite 8 · React 19 · TypeScript (strict)
+- Tailwind CSS v4 — design tokens defined as `oklch` variables in `src/styles.css`
+- [shadcn/ui](https://ui.shadcn.com) (Radix) · lucide-react icons
+- nitro — production build, Cloudflare Worker by default
 
-1. Visual Identity & Brand:
+## Getting started
 
-
-
-
-Color Palette: Deep Graphite (#13161A) background, Mist White (#EDF1F5) for primary text, and a crisp Ice Blue (#A2C2D6) accent color for buttons, active links, and hover states. This provides a cool, technical, yet highly elegant architectural feel.
-
-Typography: Use a structured, modern display Serif (like PP Editorial New or Ogg) for primary headers to bring editorial luxury, paired with a highly legible, geometric Sans-Serif (like Inter or Neue Haas Grotesk) for body text, metadata, and navigation.
-
-Vibe: Think 'High-End Technical Studio.' Rely heavily on negative space, strict grid alignments, and absence of cluttered borders. The design should feel cold, precise, and deeply immersive.
-
-2. Layout & Navigation:
-
-
-
-
-Sticky Header: A minimalist navigation bar with [Work, Studio, Contact]. Apply a sleek 'Glassmorphism' effect (frosted background blur with a subtle #1D2228 tint) when scrolling down the page.
-
-Hero Section: A high-impact, full-height opening. Centered, oversized typography reading: 'Form, Space, and Visual Precision.' Followed by a refined sub-headline: 'A multidisciplinary practice merging interior architecture with compelling graphic identities.'
-
-The 'Dual Entry' Section: Below the hero, create two expansive, side-by-side interactive gateway cards.
-
-
-
-
-Card 1: 'Spatial Design' (Showcasing Interior CADs and 3D renders).
-
-Card 2: 'Visual Systems' (Showcasing branding, posters, and graphic layouts).
-
-Requirement: These cards should feature a smooth, slow-ease zoom effect on the background image upon hover, while the Ice Blue text gently fades in.
-
-3. The Portfolio Gallery (The Core):
-
-
-
-
-Filter System: Implement a clean, minimalist 'Tab' system at the top of the gallery gallery: [All Projects] [Spatial & Interiors] [Visual & Graphic]. The active tab should be underlined in the Ice Blue accent.
-
-Grid Style: Utilize a staggered Masonry Grid layout.
-
-
-
-
-Interior Design projects should occupy expansive, wide landscape cards to showcase room breadth and lighting.
-
-Graphic Design projects should sit in structured, uniform square or portrait cards to highlight layout and typography.
-
-Card Design: Images must be full-bleed edge-to-edge with absolutely no borders. Project titles and discipline tags should only reveal themselves via a smooth, dark gradient overlay when the user hovers over the thumbnail, preserving a pristine 'art gallery' initial view.
-
-4. Functional Sections:
-
-
-
-
-About Section: A sophisticated split-screen layout. The left side features a moody, professional portrait or an abstract 3D spatial rendering; the right side features a concise bio detailing your unique methodology of applying spatial awareness to 2D graphics, and visual storytelling to 3D interiors.
-
-Contact/Footer: A bold, screen-filling 'Let’s Collaborate' section. Feature a massive, interactive email link that changes to the Ice Blue accent on hover, accompanied by minimalist social typography links (Behance, LinkedIn, Instagram).
-
-5. Technical Instructions:
-
-
-
-
-Ensure the site is flawlessly responsive, scaling the masonry grid down to a single column for mobile devices.
-
-Implement a subtle 'Back to Top' floating arrow that materializes after scrolling past the Hero section.
-
-Use smooth-scroll behavior for all internal anchor links.
-
-Bonus Interaction: Add a custom, minimalist dot cursor that expands slightly when hovering over clickable project cards or links.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://hadeeratariqs.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5d5ddf6f-8398-4e11-8f4b-6b75f5872c39).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requires Node.js 22+.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+The dev server starts on Vite's default port (5173), or the next free one.
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Vite dev server with SSR |
+| `npm run build` | Production build via nitro |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier |
+
+## Project layout
+
+```
+src/
+  routes/
+    __root.tsx    app shell — <html>, head meta, 404 and error boundaries
+    index.tsx     the entire site: hero, gateways, gallery, profile, contact
+  components/
+    project-drawer.tsx   right-side project detail panel
+    ui/                  shadcn components (only button.tsx is currently used)
+  lib/
+    error-capture.ts     preserves stack traces through h3's error handling
+    error-page.ts        standalone HTML shown when SSR fails outright
+  assets/         images, imported directly so Vite fingerprints them
+  styles.css      design tokens, keyframes, base layer
+  server.ts       SSR fetch handler
+  start.ts        request middleware — error wrapper + CSRF
+```
+
+`src/routeTree.gen.ts` is generated by TanStack Router. Never edit it by hand.
+
+The site is one route (`/`) with anchor-scroll navigation between sections —
+`#top`, `#disciplines`, `#work`, `#profile`, `#contact`.
+
+## Design tokens
+
+Defined once in `src/styles.css` and exposed to Tailwind through `@theme inline`.
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `background` | `#13161A` Deep Graphite | page base |
+| `foreground` | `#EDF1F5` Mist White | primary text |
+| `primary` | `#A2C2D6` Ice Blue | accents, hover, active states |
+| `surface` / `secondary` | near-black greys | section panels |
+| `ink-soft` | soft grey | body copy |
+
+Type is [DM Sans](https://fonts.google.com/specimen/DM+Sans) for everything
+structural, with [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif)
+reserved for the monogram, gateway titles, and project titles.
+
+## Deployment
+
+The production build targets Cloudflare Workers by default. To build for a
+different host, set the matching nitro preset:
+
+```sh
+NITRO_PRESET=vercel npm run build
+NITRO_PRESET=netlify npm run build
+NITRO_PRESET=node-server npm run build
+```
+
+Or change the default in `vite.config.ts`.
+
+Nothing on the site fetches data at runtime, so it can also be prerendered to
+fully static output if a serverless host isn't wanted.

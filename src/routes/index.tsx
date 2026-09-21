@@ -2,15 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import heroInteriorAsset from "@/assets/hero-interior.jpg.asset.json";
-import landscapeBenchAsset from "@/assets/landscape-bench-detail.asset.json";
-import landscapeBubbleAsset from "@/assets/landscape-bubble.asset.json";
-import landscapePavingAsset from "@/assets/landscape-paving.asset.json";
-import landscapePlanAsset from "@/assets/landscape-plan.asset.json";
-import landscapeCourtAsset from "@/assets/landscape-render-court.asset.json";
-import landscapeFrontAsset from "@/assets/landscape-render-front.asset.json";
-import landscapeSeatingAsset from "@/assets/landscape-seating.asset.json";
-import landscapeSiteAsset from "@/assets/landscape-site.asset.json";
+import heroInterior from "@/assets/hero-interior.jpg";
+import landscapeBench from "@/assets/landscape-bench-detail.jpg";
+import landscapeBubble from "@/assets/landscape-bubble.jpg";
+import landscapePaving from "@/assets/landscape-paving.jpg";
+import landscapePlan from "@/assets/landscape-plan.jpg";
+import landscapeCourt from "@/assets/landscape-render-court.webp";
+import landscapeFront from "@/assets/landscape-render-front.webp";
+import landscapeSeating from "@/assets/landscape-seating.jpg";
+import landscapeSite from "@/assets/landscape-site.jpg";
 import spatialOne from "@/assets/spatial-01.jpg";
 import spatialTwo from "@/assets/spatial-02.jpg";
 import spatialThree from "@/assets/spatial-03.jpg";
@@ -67,7 +67,7 @@ const landscapeDetail: ProjectDetail = {
       label: "01 · Site Condition",
       heading: "The existing forecourt",
       note: "The starting point: patchy grass, exposed service lines, and no shade or seating. Photographs and measurements of the site set the constraints for everything that follows.",
-      image: landscapeSiteAsset.url,
+      image: landscapeSite,
       width: 1600,
       height: 1204,
     },
@@ -75,7 +75,7 @@ const landscapeDetail: ProjectDetail = {
       label: "02 · Bubble Diagram",
       heading: "Zoning and circulation",
       note: "A hand-drawn bubble diagram resolves the zones first — planting beds, the seating pocket, and two curved paths that guide movement toward the department building.",
-      image: landscapeBubbleAsset.url,
+      image: landscapeBubble,
       width: 1755,
       height: 1240,
     },
@@ -83,7 +83,7 @@ const landscapeDetail: ProjectDetail = {
       label: "03 · Site Plan",
       heading: "Dimensioned CAD plan",
       note: "The AutoCAD plan fixes the geometry: the 24'-11\" planter edge, the curved bench line, paving widths, and the setbacks that keep circulation clear of the façade.",
-      image: landscapePlanAsset.url,
+      image: landscapePlan,
       width: 869,
       height: 783,
     },
@@ -91,7 +91,7 @@ const landscapeDetail: ProjectDetail = {
       label: "04 · Render",
       heading: "Entrance approach",
       note: "The front render tests the proposal against the real façade — a mature shade tree, layered planting along the boundary wall, and a paved walkway leading straight to the porch.",
-      image: landscapeFrontAsset.url,
+      image: landscapeFront,
       width: 1920,
       height: 1452,
     },
@@ -99,7 +99,7 @@ const landscapeDetail: ProjectDetail = {
       label: "05 · Render",
       heading: "Shaded courtyard",
       note: "A late-afternoon study of the courtyard: dappled shade across the lawn, the curved bench tucked against the raised planter, and a hedge line softening the boundary.",
-      image: landscapeCourtAsset.url,
+      image: landscapeCourt,
       width: 1920,
       height: 1562,
     },
@@ -107,7 +107,7 @@ const landscapeDetail: ProjectDetail = {
       label: "06 · Seating",
       heading: "The curved bench spine",
       note: "The serpentine bench follows the planter wall, giving students informal seating that faces the lawn while keeping the walking route uninterrupted.",
-      image: landscapeSeatingAsset.url,
+      image: landscapeSeating,
       width: 1600,
       height: 898,
     },
@@ -115,7 +115,7 @@ const landscapeDetail: ProjectDetail = {
       label: "07 · Detail",
       heading: "Materials up close",
       note: "Timber slats on a dark steel frame against exposed-aggregate concrete — warm against cool, with ferns and palms packed behind the seat back.",
-      image: landscapeBenchAsset.url,
+      image: landscapeBench,
       width: 1482,
       height: 1062,
     },
@@ -123,7 +123,7 @@ const landscapeDetail: ProjectDetail = {
       label: "08 · Paving",
       heading: "Stone and pebble path",
       note: "Large stone slabs set in pebble joints keep drainage open and give the path a quiet rhythm where it meets the planting bed and the lawn edge.",
-      image: landscapePavingAsset.url,
+      image: landscapePaving,
       width: 1365,
       height: 1152,
     },
@@ -131,7 +131,7 @@ const landscapeDetail: ProjectDetail = {
 };
 
 const projects: Project[] = [
-  { title: "Landscape Design", type: "spatial", meta: "Landscape · 2026", image: landscapeFrontAsset.url, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
+  { title: "Landscape Design", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
   { title: "Lake House 01", type: "spatial", meta: "Residential · 2026", image: spatialOne, shape: "wide", width: 1600, height: 1008 },
   { title: "Northline Editions", type: "visual", meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
   { title: "House of Stillness", type: "spatial", meta: "Residential · 2025", image: spatialTwo, shape: "wide", width: 1600, height: 1008 },
@@ -286,7 +286,7 @@ function Portfolio() {
       </header>
 
       <section id="top" className="relative isolate flex min-h-[92svh] items-center overflow-hidden px-5 pt-24 sm:px-8 lg:px-12">
-        <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroInteriorAsset.url})`, zIndex: -30 }} />
+        <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroInterior})`, zIndex: -30 }} />
         <div aria-hidden="true" className="absolute inset-0 bg-background/85" style={{ zIndex: -20 }} />
         <div aria-hidden="true" className="ambient-glow pointer-events-none absolute inset-0 -z-10" />
         <GlowDots />

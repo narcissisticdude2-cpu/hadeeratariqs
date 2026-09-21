@@ -1,0 +1,9 @@
+# The repo is authored with LF. Without this, a Windows checkout under
+# core.autocrlf=true converts everything to CRLF and Prettier flags every line.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
