@@ -329,3 +329,38 @@ npm run lint
   so no competing lockfile lands in the repo. Install takes ~17 min.
 - Screenshot harness for visual checks lives in the session scratchpad
   (`shot.mjs` / `sections.mjs`, puppeteer-core driving the installed Chrome).
+
+---
+
+## 9. Migration outcome (2026-09-21)
+
+Committed as `d00d36b` on branch `remove-lovable`, 32 files changed.
+
+**Final proof:** `node_modules/@lovable.dev` was physically deleted and both
+`npm run build` and `npm run dev` still succeed. The project no longer depends on
+Lovable in any form.
+
+Lint went from **5,353 problems → 92** once line endings were fixed. What remains
+is pre-existing and cosmetic: 86 `prettier/prettier` errors (the Lovable-authored
+`index.tsx` has lines far past the configured `printWidth: 100`) and 6
+`react-refresh/only-export-components` warnings. `npm run format` clears all 86 in
+one shot, but it rewrites `index.tsx` substantially — **left undone deliberately**
+so the migration diff stays readable. Worth doing as its own commit.
+
+### Notes for next session
+
+- **`bun.lock` still lists `@lovable.dev/vite-tanstack-config`.** It is the only
+  remaining mention of Lovable in the repo. It resolves when the lockfile is
+  regenerated — pending the bun-vs-npm decision (checklist item 8). There is
+  currently **no npm lockfile at all**, which is the bigger gap: either commit to
+  bun and regenerate `bun.lock`, or run a plain `npm install` and commit
+  `package-lock.json`.
+- **Cloudflare worker name** auto-derives from the git remote as
+  `narcissisticdude2-cpu-hadeeratariqs`. Set it explicitly in the nitro config
+  before deploying if that name matters.
+- **Visual note:** now that the real Landscape render is actually visible in the
+  gallery, it reads noticeably brighter and greener than the moody AI-stock
+  images around it. The genuine work currently looks out of place against the
+  placeholders — which resolves itself if the placeholders are replaced, but is
+  worth watching.
+- Dev port moved 8080 → 5173 (Vite default) since the wrapper no longer forces it.
