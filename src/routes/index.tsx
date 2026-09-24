@@ -2,6 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import galleryPlan from "@/assets/gallery-plan.webp";
+import galleryCases from "@/assets/gallery-render-cases.webp";
+import galleryCorner from "@/assets/gallery-render-corner.webp";
+import galleryEntrance from "@/assets/gallery-render-entrance.webp";
+import galleryWall from "@/assets/gallery-render-wall.webp";
+import galleryWide from "@/assets/gallery-render-wide.webp";
+import gallerySectionEnd from "@/assets/gallery-section-end.webp";
+import gallerySectionLong from "@/assets/gallery-section-long.webp";
 import heroInterior from "@/assets/hero-interior.jpg";
 import landscapeBench from "@/assets/landscape-bench-detail.jpg";
 import landscapeBubble from "@/assets/landscape-bubble.jpg";
@@ -11,9 +19,22 @@ import landscapeCourt from "@/assets/landscape-render-court.webp";
 import landscapeFront from "@/assets/landscape-render-front.webp";
 import landscapeSeating from "@/assets/landscape-seating.jpg";
 import landscapeSite from "@/assets/landscape-site.jpg";
-import spatialOne from "@/assets/spatial-01.jpg";
-import spatialTwo from "@/assets/spatial-02.jpg";
-import spatialThree from "@/assets/spatial-03.jpg";
+import residentialDiningBoard from "@/assets/residential-dining-board.webp";
+import residentialDiningPlan from "@/assets/residential-dining-plan.webp";
+import residentialDiningRender from "@/assets/residential-dining-render.webp";
+import residentialDrawingBoard from "@/assets/residential-drawing-board.webp";
+import residentialDrawingPlan from "@/assets/residential-drawing-plan.webp";
+import residentialDrawingRender from "@/assets/residential-drawing-render.webp";
+import residentialLivingBoard from "@/assets/residential-living-board.webp";
+import residentialLivingGarden from "@/assets/residential-living-garden.webp";
+import residentialLivingPlan from "@/assets/residential-living-plan.webp";
+import residentialLivingWall from "@/assets/residential-living-wall.webp";
+import schoolClassroom from "@/assets/school-classroom.webp";
+import schoolExterior from "@/assets/school-exterior.webp";
+import schoolPlan from "@/assets/school-plan.webp";
+import schoolRestroom from "@/assets/school-restroom.webp";
+import schoolTherapy from "@/assets/school-therapy.webp";
+import schoolZoning from "@/assets/school-zoning.webp";
 import visualOne from "@/assets/visual-01.jpg";
 import visualTwo from "@/assets/visual-02.jpg";
 import visualThree from "@/assets/visual-03.jpg";
@@ -130,22 +151,67 @@ const landscapeDetail: ProjectDetail = {
   ],
 };
 
+const residentialDetail: ProjectDetail = {
+  title: "Residential Interior",
+  meta: "Interior Architecture · Residence · 2026",
+  overview:
+    "A modern residence shaped by warm minimalism, organic texture, and easy spatial flow. Walnut, bouclé, and limestone run through the living, drawing, and dining rooms, pairing precise planning with a tactile, quietly luxurious finish.",
+  sections: [
+    { label: "01 · Living Room Plan", heading: "Open conversation zone", note: "The CAD layout centres an open-plan conversation zone on an oversized L-shaped sectional. Dimensioning keeps traffic moving freely between the entrances and the glazed façade.", image: residentialLivingPlan, width: 1728, height: 822 },
+    { label: "02 · Mood Board", heading: "Living room palette", note: "Oak panelling, travertine, and bouclé accents set a refined palette. Sculptural walnut pieces bring rich contrast against soft, neutral walls.", image: residentialLivingBoard, width: 896, height: 1166 },
+    { label: "03 · Render", heading: "Garden view", note: "Floor-to-ceiling glazing frames the garden and lets daylight wash across the warm wood panelling. Low seating keeps sightlines open through the full depth of the room.", image: residentialLivingGarden, width: 1920, height: 1080 },
+    { label: "04 · Render", heading: "Feature wall and console", note: "Timber panelling hides flush doors to form one continuous feature wall. A carved console and abstract artwork add warmth and an editorial note.", image: residentialLivingWall, width: 1920, height: 1080 },
+    { label: "05 · Drawing Room Plan", heading: "Formal seating flow", note: "The drawing room plan sets a formal lounge around a curved central sofa and a pair of accent chairs. Symmetrical proportions keep the room welcoming for guests.", image: residentialDrawingPlan, width: 1515, height: 825 },
+    { label: "06 · Mood Board", heading: "Drawing room materials", note: "Bouclé upholstery on walnut frames gives the drawing room structural warmth, with stone detailing and a textured wool rug picked out by soft light.", image: residentialDrawingBoard, width: 950, height: 1166 },
+    { label: "07 · Render", heading: "Lighting and ambience", note: "Concealed vertical LED strips wash the plaster walls in a warm glow, while an arched floor lamp creates a reading corner over organic timber coffee tables.", image: residentialDrawingRender, width: 1920, height: 1080 },
+    { label: "08 · Dining Plan", heading: "Ten-seat dining layout", note: "A ten-seat table runs alongside full-height sliding glass doors. Generous clearances keep movement to the service areas unobstructed.", image: residentialDiningPlan, width: 1586, height: 917 },
+    { label: "09 · Mood Board", heading: "Dining materials", note: "Walnut, ivory bouclé, and sheer linen make the dining room warm and welcoming, with matte black hardware grounding the neutral palette.", image: residentialDiningBoard, width: 950, height: 1166 },
+    { label: "10 · Render", heading: "Dining perspective", note: "A hand-blown glass bubble chandelier hangs over the solid walnut table as the focal point. Sheer curtains filter garden light while keeping the room private.", image: residentialDiningRender, width: 1920, height: 1080 },
+  ],
+};
+
+const schoolDetail: ProjectDetail = {
+  title: "Inclusive School",
+  meta: "Educational Architecture · Universal Design · 2026",
+  overview:
+    "A school designed around diverse learning styles and sensory needs. A radial plan puts accessible circulation and intuitive wayfinding first, and each administrative, academic, and therapy hub is tuned to the right level of stimulation.",
+  sections: [
+    { label: "01 · Floor Plan", heading: "The radial plan", note: "A curved radial corridor links the specialist facilities: food court, drama hub, administration, classrooms, and a dedicated medical rehabilitation wing. Dimensions are set with accessibility in mind.", image: schoolPlan, width: 2246, height: 1338 },
+    { label: "02 · Zoning", heading: "Sensory and functional zones", note: "The building is zoned by sensory profile: high-stimulus activity areas, administrative working zones, low-stimulus learning spaces, transitional thresholds, soft-scape buffers, and an outdoor sensory garden.", image: schoolZoning, width: 1682, height: 858 },
+    { label: "03 · Render", heading: "Inclusive classroom", note: "Natural light, calm pastel acoustic panels, tactile paving underfoot, and flexible seating that works for wheelchairs and different postures for learning.", image: schoolClassroom, width: 1672, height: 941 },
+    { label: "04 · Render", heading: "Therapy and rehabilitation", note: "Treadmills, stationary bikes, treatment tables, and bean-bag seating in soft blues. The room is built for recovery and calm.", image: schoolTherapy, width: 1672, height: 941 },
+    { label: "05 · Render", heading: "Universal restrooms", note: "Low granite vanities with automatic fittings, accessible stall doors with push-to-open buttons, grab bars, and encouraging wall signage.", image: schoolRestroom, width: 1672, height: 941 },
+    { label: "06 · Exterior", heading: "Massing and roof plan", note: "The top-down view shows the curved roof forms, perimeter brick boundary, drop-off drive, and green courtyards framing the campus.", image: schoolExterior, width: 800, height: 450 },
+  ],
+};
+
+const galleryDetail: ProjectDetail = {
+  title: "Gallery Curation",
+  meta: "Exhibition Design · Spatial Curation · 2026",
+  overview:
+    "A reimagined exhibition room for a historical portrait collection on Quaid-e-Azam Muhammad Ali Jinnah. Classic framed photography meets a central holographic display, set against deep midnight-blue walls and geometric patterned flooring under precise track lighting.",
+  sections: [
+    { label: "01 · Floor Plan", heading: "Master gallery plan", note: "The dimensioned plan fixes the room size, entry doors, the central holographic projector ring, and the curation layout across every perimeter wall.", image: galleryPlan, width: 2270, height: 1611 },
+    { label: "02 · Elevation", heading: "The 32-foot main wall", note: "The long-wall elevation sets exact mounting heights, frame spacing, door clearance, and the positions of the overhead track lights.", image: gallerySectionLong, width: 2254, height: 1460 },
+    { label: "03 · Render", heading: "Main exhibition wall", note: "A frontal view of the symmetrical monochrome portrait collection on deep navy walls, picked out by warm track spotlights.", image: galleryWall, width: 1672, height: 941 },
+    { label: "04 · Elevation", heading: "The 18-foot end wall", note: "The end-wall elevation sets out the centred frame arrangement, wall dimensions, and directed track lighting.", image: gallerySectionEnd, width: 2206, height: 1834 },
+    { label: "05 · Render", heading: "Holographic centrepiece", note: "A wide view of the central holographic figure against the traditional geometric floor tiles and the curated picture walls.", image: galleryWide, width: 1672, height: 941 },
+    { label: "06 · Render", heading: "Entrance and narrative wall", note: "From the doorway, the lit narrative panel sits alongside the holographic display and a seating bench.", image: galleryEntrance, width: 1672, height: 941 },
+    { label: "07 · Render", heading: "Display cases", note: "Lit freestanding display cases sit beneath framed prints and narrative panels.", image: galleryCases, width: 1672, height: 941 },
+    { label: "08 · Render", heading: "Corner showcase", note: "The corner turn, with track-light highlights and a lit showcase table for historical artefacts.", image: galleryCorner, width: 1672, height: 941 },
+  ],
+};
+
 const projects: Project[] = [
   { title: "Landscape Design", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
-  { title: "Lake House 01", type: "spatial", meta: "Residential · 2026", image: spatialOne, shape: "wide", width: 1600, height: 1008 },
+  { title: "Residential Interior", type: "spatial", meta: "Residential · 2026", image: residentialLivingGarden, shape: "wide", width: 1920, height: 1080, detail: residentialDetail },
   { title: "Northline Editions", type: "visual", meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
-  { title: "House of Stillness", type: "spatial", meta: "Residential · 2025", image: spatialTwo, shape: "wide", width: 1600, height: 1008 },
+  { title: "Inclusive School", type: "spatial", meta: "Educational · 2026", image: schoolClassroom, shape: "wide", width: 1672, height: 941, detail: schoolDetail },
   { title: "Axis Archive", type: "visual", meta: "Editorial · 2025", image: visualTwo, shape: "square", width: 1200, height: 1200 },
-  { title: "Nocturne Hotel", type: "spatial", meta: "Hospitality · 2025", image: spatialThree, shape: "wide", width: 1600, height: 1008 },
+  { title: "Gallery Curation", type: "spatial", meta: "Exhibition · 2026", image: galleryWide, shape: "wide", width: 1672, height: 941, detail: galleryDetail },
   { title: "Atmospheres 03", type: "visual", meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
 
-
-const spatialImages = [
-  { image: spatialOne, width: 1600, height: 1008 },
-  { image: spatialTwo, width: 1600, height: 1008 },
-  { image: spatialThree, width: 1600, height: 1008 },
-];
 
 const visualImages = [
   { image: visualOne, width: 1104, height: 1408 },
@@ -155,32 +221,20 @@ const visualImages = [
 
 function buildDetail(project: (typeof projects)[number]): ProjectDetail {
   if (project.detail) return project.detail;
-  const pool = project.type === "spatial" ? spatialImages : visualImages;
-  const pick = (i: number) => pool[i % pool.length]!;
+  // Every spatial project carries its own detail; only the visual placeholders fall through to here.
+  const pick = (i: number) => visualImages[i % visualImages.length]!;
 
-
-  const sections =
-    project.type === "spatial"
-      ? [
-          { label: "01 · Floor Plan", heading: "Plan and circulation", note: "The CAD plan sets the spine of the project: sightlines, thresholds, and the sequence of rooms are resolved before any surface is chosen.", ...pick(0) },
-          { label: "02 · Mood Board", heading: "Material atmosphere", note: "Stone, brushed metal, and warm timber are balanced against cool daylight to keep the palette quiet but tactile.", ...pick(1) },
-          { label: "03 · Render", heading: "Daylight study", note: "3ds Max and V-Ray renders test how light lands across the day, tuning reflectance and contrast in the main volume.", ...pick(2) },
-          { label: "04 · Render", heading: "Detail and joinery", note: "Close studies of joinery, edges, and shadow gaps confirm the proportions hold at human scale.", ...pick(0) },
-        ]
-      : [
-          { label: "01 · Concept", heading: "Grid and structure", note: "The system begins as a typographic grid — column rhythm, margins, and scale steps that hold across every format.", ...pick(0) },
-          { label: "02 · Mood Board", heading: "Visual references", note: "Reference images, textures, and print stock set the tone before the identity is drawn.", ...pick(1) },
-          { label: "03 · Layouts", heading: "Editorial application", note: "Spreads and posters stress-test the system with dense and sparse content alike.", ...pick(2) },
-          { label: "04 · Collateral", heading: "Applied identity", note: "Signage, print collateral, and digital surfaces carry the same proportions as the spatial work.", ...pick(0) },
-        ];
+  const sections = [
+    { label: "01 · Concept", heading: "Grid and structure", note: "The system begins as a typographic grid — column rhythm, margins, and scale steps that hold across every format.", ...pick(0) },
+    { label: "02 · Mood Board", heading: "Visual references", note: "Reference images, textures, and print stock set the tone before the identity is drawn.", ...pick(1) },
+    { label: "03 · Layouts", heading: "Editorial application", note: "Spreads and posters stress-test the system with dense and sparse content alike.", ...pick(2) },
+    { label: "04 · Collateral", heading: "Applied identity", note: "Signage, print collateral, and digital surfaces carry the same proportions as the spatial work.", ...pick(0) },
+  ];
 
   return {
     title: project.title,
     meta: project.meta,
-    overview:
-      project.type === "spatial"
-        ? "A spatial study developed from plan to render — resolving circulation, material weight, and light before the room is dressed."
-        : "A visual system built from a strict grid — typography, imagery, and print collateral tuned into one consistent voice.",
+    overview: "A visual system built from a strict grid — typography, imagery, and print collateral tuned into one consistent voice.",
     sections,
   };
 }
@@ -308,7 +362,7 @@ function Portfolio() {
       </section>
 
       <section id="disciplines" className="grid min-h-[76svh] md:grid-cols-2">
-        <Gateway href="#work" image={spatialOne} number="01" title="Spatial Design" detail="Interiors · CAD · 3D" onSelect={() => setFilter("spatial")} />
+        <Gateway href="#work" image={residentialLivingGarden} number="01" title="Spatial Design" detail="Interiors · CAD · 3D" onSelect={() => setFilter("spatial")} />
         <Gateway href="#work" image={visualOne} number="02" title="Visual Systems" detail="Identity · Editorial · Campaigns" onSelect={() => setFilter("visual")} />
       </section>
 
