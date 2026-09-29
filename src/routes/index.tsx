@@ -2,6 +2,19 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUp, MoveUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import foodcourtAccessible from "@/assets/foodcourt-accessible-seating.webp";
+import foodcourtAxial from "@/assets/foodcourt-axial.webp";
+import foodcourtColumns from "@/assets/foodcourt-columns.webp";
+import foodcourtCounter from "@/assets/foodcourt-counter.webp";
+import foodcourtHero from "@/assets/foodcourt-hero.webp";
+import foodcourtLiftLounge from "@/assets/foodcourt-lift-lounge.webp";
+import foodcourtMoodboard from "@/assets/foodcourt-moodboard.webp";
+import foodcourtPlan from "@/assets/foodcourt-plan.webp";
+import foodcourtQuietAerial from "@/assets/foodcourt-quiet-aerial.webp";
+import foodcourtQuietGround from "@/assets/foodcourt-quiet-ground.webp";
+import foodcourtSocial from "@/assets/foodcourt-social.webp";
+import foodcourtWayfinding from "@/assets/foodcourt-wayfinding.webp";
+import foodcourtZoning from "@/assets/foodcourt-zoning.webp";
 import galleryPlan from "@/assets/gallery-plan.webp";
 import galleryCases from "@/assets/gallery-render-cases.webp";
 import galleryCorner from "@/assets/gallery-render-corner.webp";
@@ -157,7 +170,7 @@ const residentialDetail: ProjectDetail = {
   overview:
     "A modern residence shaped by warm minimalism, organic texture, and easy spatial flow. Walnut, bouclé, and limestone run through the living, drawing, and dining rooms, pairing precise planning with a tactile, quietly luxurious finish.",
   sections: [
-    { label: "01 · Living Room Plan", heading: "Open conversation zone", note: "The CAD layout centres an open-plan conversation zone on an oversized L-shaped sectional. Dimensioning keeps traffic moving freely between the entrances and the glazed façade.", image: residentialLivingPlan, width: 1600, height: 694, large: true },
+    { label: "01 · Living Room Plan", heading: "Open conversation zone", note: "The CAD layout centres an open-plan conversation zone on an oversized L-shaped sectional. Dimensioning keeps traffic moving freely between the entrances and the glazed façade.", bigLabel: true, image: residentialLivingPlan, width: 1600, height: 694, large: true },
     { label: "02 · Mood Board", heading: "Living room palette", note: "Oak panelling, travertine, and bouclé accents set a refined palette. Sculptural walnut pieces bring rich contrast against soft, neutral walls.", image: residentialLivingBoard, width: 809, height: 1080 },
     { label: "03 · Render", heading: "Garden view", note: "Floor-to-ceiling glazing frames the garden and lets daylight wash across the warm wood panelling. Low seating keeps sightlines open through the full depth of the room.", image: residentialLivingGarden, width: 1738, height: 1080 },
     { label: "04 · Render", heading: "Feature wall and console", note: "Timber panelling hides flush doors to form one continuous feature wall. A carved console and abstract artwork add warmth and an editorial note.", image: residentialLivingWall, width: 1623, height: 1080 },
@@ -185,6 +198,28 @@ const schoolDetail: ProjectDetail = {
   ],
 };
 
+const foodCourtDetail: ProjectDetail = {
+  title: "Inclusive Food Court",
+  meta: "Public Interior · Universal Design · 2026",
+  overview:
+    "A reimagined third-floor food court at Amanah Mall, Lahore, redesigned as a fully barrier-free public space. Continuous tactile paving, low-height ordering counters, varied ergonomic seating, and dedicated acoustic quiet booths give every visitor comfort, dignity, and independence.",
+  sections: [
+    { label: "01 · Floor Plan", heading: "Master inclusive plan", note: "The dimensioned plan sets out the full 167-foot hall: food stalls, the central lift and escalator core, continuous tactile pathways in yellow, clear turning radii, and zoned dining areas.", bigLabel: true, image: foodcourtPlan, width: 1774, height: 887 },
+    { label: "02 · Zoning", heading: "Social and quiet zones", note: "A functional diagram separates high-energy social dining from sensory-friendly quiet zones, with clear circulation linking the vendors and vertical transport.", image: foodcourtZoning, width: 2000, height: 961 },
+    { label: "03 · Mood Board", heading: "Materials and furniture", note: "Light oak HPL tabletops, wipe-clean vinyl upholstery, and polypropylene shell chairs suit heavy public use. Supportive armchairs help elderly or injured visitors, and wave-form acoustic baffles calm the ceiling plane.", image: foodcourtMoodboard, width: 2000, height: 2829 },
+    { label: "04 · Render", heading: "Main concourse", note: "A wide view of the food hall shows wood-slat acoustic baffles, stone-clad piers, barrier-free concourses, and integrated wheelchair-accessible seating.", image: foodcourtHero, width: 2000, height: 1178 },
+    { label: "05 · Render", heading: "Barrier-free ordering counter", note: "A multi-height service counter with lowered POS points and recessed kick-plates lets seated guests approach head-on and order unaided.", image: foodcourtCounter, width: 2000, height: 1718 },
+    { label: "06 · Render", heading: "Tactile wayfinding corridor", note: "Directional tactile paving guides visually impaired visitors past seating nooks toward the restrooms and lifts.", image: foodcourtWayfinding, width: 1122, height: 1402 },
+    { label: "07 · Render", heading: "Escalator landing lounge", note: "A resting zone beside the escalators, with high-back sofas and tactile paths, lets elderly or mobility-impaired visitors pause and get their bearings before entering the hall.", image: foodcourtLiftLounge, width: 2000, height: 1414 },
+    { label: "08 · Render", heading: "Accessible dining and supportive seating", note: "Centre-pedestal tables, armrest chairs for easier standing, and open bays for wheelchairs make up the ergonomic dining setup.", image: foodcourtAccessible, width: 2000, height: 1168 },
+    { label: "09 · Render", heading: "Axial dining perspective", note: "Generous aisles, slip-resistant porcelain flooring, and balanced ambient light run down the length of the main dining floor.", image: foodcourtAxial, width: 2000, height: 1479 },
+    { label: "10 · Render", heading: "Social dining concourse", note: "Varied seating types, clear sightlines across the vendors, and timber acoustic ceiling treatments define the open social area.", image: foodcourtSocial, width: 1448, height: 1086 },
+    { label: "11 · Render", heading: "Columns and table layout", note: "Limestone-plastered columns rise through linear acoustic slats above wide circulation corridors.", image: foodcourtColumns, width: 1445, height: 1088 },
+    { label: "12 · Render", heading: "Quiet booths from above", note: "High-backed, fabric-panelled booths absorb ambient noise and give neurodivergent visitors and families a calm, low-stimulus refuge.", image: foodcourtQuietAerial, width: 1448, height: 1086 },
+    { label: "13 · Render", heading: "Quiet zone at eye level", note: "At ground level, enclosed acoustic booth alcoves flow into open pedestal dining tables.", image: foodcourtQuietGround, width: 2000, height: 1105 },
+  ],
+};
+
 const galleryDetail: ProjectDetail = {
   title: "Gallery Curation",
   meta: "Exhibition Design · Spatial Curation · 2026",
@@ -209,6 +244,7 @@ const projects: Project[] = [
   { title: "Inclusive School", type: "spatial", meta: "Educational · 2026", image: schoolClassroom, shape: "wide", width: 1672, height: 941, detail: schoolDetail },
   { title: "Axis Archive", type: "visual", meta: "Editorial · 2025", image: visualTwo, shape: "square", width: 1200, height: 1200 },
   { title: "Gallery Curation", type: "spatial", meta: "Exhibition · 2026", image: galleryWide, shape: "wide", width: 1672, height: 941, detail: galleryDetail },
+  { title: "Inclusive Food Court", type: "spatial", meta: "Public Interior · 2026", image: foodcourtHero, shape: "wide", width: 2000, height: 1178, detail: foodCourtDetail },
   { title: "Atmospheres 03", type: "visual", meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
 ];
 
