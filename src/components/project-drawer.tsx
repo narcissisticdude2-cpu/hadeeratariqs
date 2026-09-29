@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { ImageLightbox } from "./image-lightbox";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
 export type ProjectSection = {
@@ -8,6 +9,8 @@ export type ProjectSection = {
   image: string;
   width: number;
   height: number;
+  large?: boolean;
+  bigLabel?: boolean;
 };
 
 export type ProjectDetail = {
@@ -63,6 +66,7 @@ function Reveal({
 
 export function ProjectDrawer({ project, onClose }: { project: ProjectDetail | null; onClose: () => void }) {
   const [root, setRoot] = useState<HTMLElement | null>(null);
+  const [zoomed, setZoomed] = useState<{ src: string; alt: string } | null>(null);
   const open = Boolean(project);
 
   useEffect(() => {
@@ -123,12 +127,19 @@ export function ProjectDrawer({ project, onClose }: { project: ProjectDetail | n
                 {project.sections.map((section, index) => {
                   const imageRight = index % 2 === 0;
                   return (
-                    <section key={section.label} className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
+                    <section
+                      key={section.label}
+                      className={`grid items-center gap-8 md:gap-12 ${section.large ? "md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]" : "md:grid-cols-2"}`}
+                    >
                       <Reveal
                         side={imageRight ? "left" : "right"}
                         className={imageRight ? "md:order-1" : "md:order-2"}
                       >
-                        <p className="mb-4 text-[10px] uppercase tracking-[0.25em] text-primary">{section.label}</p>
+                        <p
+                          className={`mb-4 uppercase text-primary ${section.bigLabel ? "text-base tracking-[0.2em] sm:text-lg" : "text-[10px] tracking-[0.25em]"}`}
+                        >
+                          {section.label}
+                        </p>
                         <h3 className="font-sans text-[clamp(1.5rem,2.6vw,2.25rem)] font-normal leading-[1.15]">
                           {section.heading}
                         </h3>
@@ -142,10 +153,11 @@ export function ProjectDrawer({ project, onClose }: { project: ProjectDetail | n
                         <img
                           src={section.image}
                           alt={`${project.title} — ${section.label}`}
+                          onClick={() => setZoomed({ src: section.image, alt: `${project.title} — ${section.label}` })}
                           width={section.width}
                           height={section.height}
                           loading="lazy"
-                          className="h-full w-full object-cover"
+                          className="h-full w-full cursor-zoom-in object-contain"
                         />
                       </Reveal>
                     </section>
@@ -156,6 +168,7 @@ export function ProjectDrawer({ project, onClose }: { project: ProjectDetail | n
           </ScrollRootContext.Provider>
         )}
       </aside>
+      {zoomed && <ImageLightbox src={zoomed.src} alt={zoomed.alt} onClose={() => setZoomed(null)} />}
     </>
   );
 }

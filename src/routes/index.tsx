@@ -19,16 +19,16 @@ import landscapeCourt from "@/assets/landscape-render-court.webp";
 import landscapeFront from "@/assets/landscape-render-front.webp";
 import landscapeSeating from "@/assets/landscape-seating.jpg";
 import landscapeSite from "@/assets/landscape-site.jpg";
-import residentialDiningBoard from "@/assets/residential-dining-board.webp";
-import residentialDiningPlan from "@/assets/residential-dining-plan.webp";
-import residentialDiningRender from "@/assets/residential-dining-render.webp";
-import residentialDrawingBoard from "@/assets/residential-drawing-board.webp";
-import residentialDrawingPlan from "@/assets/residential-drawing-plan.webp";
-import residentialDrawingRender from "@/assets/residential-drawing-render.webp";
-import residentialLivingBoard from "@/assets/residential-living-board.webp";
-import residentialLivingGarden from "@/assets/residential-living-garden.webp";
-import residentialLivingPlan from "@/assets/residential-living-plan.webp";
-import residentialLivingWall from "@/assets/residential-living-wall.webp";
+import residentialDiningBoard from "@/assets/residential-dining-board.png";
+import residentialDiningPlan from "@/assets/residential-dining-plan.png";
+import residentialDiningRender from "@/assets/residential-dining-render.png";
+import residentialDrawingBoard from "@/assets/residential-drawing-board.png";
+import residentialDrawingPlan from "@/assets/residential-drawing-plan.png";
+import residentialDrawingRender from "@/assets/residential-drawing-render.png";
+import residentialLivingBoard from "@/assets/residential-living-board.png";
+import residentialLivingGarden from "@/assets/residential-living-garden.png";
+import residentialLivingPlan from "@/assets/residential-living-plan.png";
+import residentialLivingWall from "@/assets/residential-living-wall.png";
 import schoolClassroom from "@/assets/school-classroom.webp";
 import schoolExterior from "@/assets/school-exterior.webp";
 import schoolPlan from "@/assets/school-plan.webp";
@@ -79,7 +79,7 @@ type Project = {
 };
 
 const landscapeDetail: ProjectDetail = {
-  title: "Landscape Design",
+  title: "Departmental Landscape Redesign",
   meta: "Landscape · Department Courtyard · 2026",
   overview:
     "A landscape intervention for a department courtyard in Lahore — turning a bare, sun-bleached forecourt into a shaded, planted setting with a curved seating spine, soft lawn, and a clear stone path to the entrance.",
@@ -157,15 +157,15 @@ const residentialDetail: ProjectDetail = {
   overview:
     "A modern residence shaped by warm minimalism, organic texture, and easy spatial flow. Walnut, bouclé, and limestone run through the living, drawing, and dining rooms, pairing precise planning with a tactile, quietly luxurious finish.",
   sections: [
-    { label: "01 · Living Room Plan", heading: "Open conversation zone", note: "The CAD layout centres an open-plan conversation zone on an oversized L-shaped sectional. Dimensioning keeps traffic moving freely between the entrances and the glazed façade.", image: residentialLivingPlan, width: 1728, height: 822 },
-    { label: "02 · Mood Board", heading: "Living room palette", note: "Oak panelling, travertine, and bouclé accents set a refined palette. Sculptural walnut pieces bring rich contrast against soft, neutral walls.", image: residentialLivingBoard, width: 896, height: 1166 },
-    { label: "03 · Render", heading: "Garden view", note: "Floor-to-ceiling glazing frames the garden and lets daylight wash across the warm wood panelling. Low seating keeps sightlines open through the full depth of the room.", image: residentialLivingGarden, width: 1920, height: 1080 },
-    { label: "04 · Render", heading: "Feature wall and console", note: "Timber panelling hides flush doors to form one continuous feature wall. A carved console and abstract artwork add warmth and an editorial note.", image: residentialLivingWall, width: 1920, height: 1080 },
-    { label: "05 · Drawing Room Plan", heading: "Formal seating flow", note: "The drawing room plan sets a formal lounge around a curved central sofa and a pair of accent chairs. Symmetrical proportions keep the room welcoming for guests.", image: residentialDrawingPlan, width: 1515, height: 825 },
-    { label: "06 · Mood Board", heading: "Drawing room materials", note: "Bouclé upholstery on walnut frames gives the drawing room structural warmth, with stone detailing and a textured wool rug picked out by soft light.", image: residentialDrawingBoard, width: 950, height: 1166 },
+    { label: "01 · Living Room Plan", heading: "Open conversation zone", note: "The CAD layout centres an open-plan conversation zone on an oversized L-shaped sectional. Dimensioning keeps traffic moving freely between the entrances and the glazed façade.", image: residentialLivingPlan, width: 1600, height: 694, large: true },
+    { label: "02 · Mood Board", heading: "Living room palette", note: "Oak panelling, travertine, and bouclé accents set a refined palette. Sculptural walnut pieces bring rich contrast against soft, neutral walls.", image: residentialLivingBoard, width: 809, height: 1080 },
+    { label: "03 · Render", heading: "Garden view", note: "Floor-to-ceiling glazing frames the garden and lets daylight wash across the warm wood panelling. Low seating keeps sightlines open through the full depth of the room.", image: residentialLivingGarden, width: 1738, height: 1080 },
+    { label: "04 · Render", heading: "Feature wall and console", note: "Timber panelling hides flush doors to form one continuous feature wall. A carved console and abstract artwork add warmth and an editorial note.", image: residentialLivingWall, width: 1623, height: 1080 },
+    { label: "05 · Drawing Room Plan", heading: "Formal seating flow", note: "The drawing room plan sets a formal lounge around a curved central sofa and a pair of accent chairs. Symmetrical proportions keep the room welcoming for guests.",bigLabel: true, image: residentialDrawingPlan, width: 1403, height: 713 },
+    { label: "06 · Mood Board", heading: "Drawing room materials", note: "Bouclé upholstery on walnut frames gives the drawing room structural warmth, with stone detailing and a textured wool rug picked out by soft light.", image: residentialDrawingBoard, width: 863, height: 1080 },
     { label: "07 · Render", heading: "Lighting and ambience", note: "Concealed vertical LED strips wash the plaster walls in a warm glow, while an arched floor lamp creates a reading corner over organic timber coffee tables.", image: residentialDrawingRender, width: 1920, height: 1080 },
-    { label: "08 · Dining Plan", heading: "Ten-seat dining layout", note: "A ten-seat table runs alongside full-height sliding glass doors. Generous clearances keep movement to the service areas unobstructed.", image: residentialDiningPlan, width: 1586, height: 917 },
-    { label: "09 · Mood Board", heading: "Dining materials", note: "Walnut, ivory bouclé, and sheer linen make the dining room warm and welcoming, with matte black hardware grounding the neutral palette.", image: residentialDiningBoard, width: 950, height: 1166 },
+    { label: "08 · Dining Plan", heading: "Ten-seat dining layout", note: "A ten-seat table runs alongside full-height sliding glass doors. Generous clearances keep movement to the service areas unobstructed.",bigLabel: true, image: residentialDiningPlan, width: 1468, height: 799 },
+    { label: "09 · Mood Board", heading: "Dining materials", note: "Walnut, ivory bouclé, and sheer linen make the dining room warm and welcoming, with matte black hardware grounding the neutral palette.", image: residentialDiningBoard, width: 864, height: 1080 },
     { label: "10 · Render", heading: "Dining perspective", note: "A hand-blown glass bubble chandelier hangs over the solid walnut table as the focal point. Sheer curtains filter garden light while keeping the room private.", image: residentialDiningRender, width: 1920, height: 1080 },
   ],
 };
@@ -203,7 +203,7 @@ const galleryDetail: ProjectDetail = {
 };
 
 const projects: Project[] = [
-  { title: "Landscape Design", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
+  { title: "Departmental Landscape Redesign", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
   { title: "Residential Interior", type: "spatial", meta: "Residential · 2026", image: residentialLivingGarden, shape: "wide", width: 1920, height: 1080, detail: residentialDetail },
   { title: "Northline Editions", type: "visual", meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
   { title: "Inclusive School", type: "spatial", meta: "Educational · 2026", image: schoolClassroom, shape: "wide", width: 1672, height: 941, detail: schoolDetail },
