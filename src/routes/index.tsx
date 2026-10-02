@@ -97,7 +97,7 @@ type Project = {
   type: "spatial" | "visual";
   meta: string;
   image: string;
-  shape: "wide" | "square" | "portrait";
+  layout: Record<Filter, string>;
   width: number;
   height: number;
   detail: ProjectDetail;
@@ -291,15 +291,26 @@ const storyDetail: ProjectDetail = {
   ],
 };
 
+// Bento tiling on a 12-column grid with fixed row units. Spans are chosen so every
+// filter state tiles exactly; `grid-auto-flow: dense` back-fills any hole left by order.
+const wide = "aspect-[16/10] md:aspect-auto md:col-span-2 md:row-span-2";
+const tall = "aspect-[4/5] md:aspect-auto md:row-span-2";
+const square = "aspect-square md:aspect-auto";
+const tile = (base: string, all: string, spatial: string, visual: string): Record<Filter, string> => ({
+  all: `${base} ${all}`,
+  spatial: `${base} ${spatial}`,
+  visual: `${base} ${visual}`,
+});
+
 const projects: Project[] = [
-  { title: "Departmental Landscape Redesign", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
-  { title: "Residential Interior", type: "spatial", meta: "Residential · 2026", image: residentialLivingGarden, shape: "wide", width: 1920, height: 1080, detail: residentialDetail },
-  { title: "Product Showcase", type: "visual", meta: "Commercial Design · 2026", image: productFour, shape: "square", width: 1080, height: 1080, detail: productDetail },
-  { title: "Inclusive School", type: "spatial", meta: "Educational · 2026", image: schoolClassroom, shape: "wide", width: 1672, height: 941, detail: schoolDetail },
-  { title: "Social Media Graphics", type: "visual", meta: "Promotional Design · 2026", image: socialThree, shape: "portrait", width: 1080, height: 1350, detail: socialDetail },
-  { title: "Gallery Curation", type: "spatial", meta: "Exhibition · 2026", image: galleryWide, shape: "wide", width: 1672, height: 941, detail: galleryDetail },
-  { title: "Inclusive Food Court", type: "spatial", meta: "Public Interior · 2026", image: foodcourtHero, shape: "wide", width: 2000, height: 1178, detail: foodCourtDetail },
-  { title: "Storybook Covers & Characters", type: "visual", meta: "Illustration · 2026", image: storySi1, shape: "square", width: 1254, height: 1254, detail: storyDetail },
+  { title: "Departmental Landscape Redesign", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, layout: tile(wide, "lg:col-span-6 lg:row-span-4", "lg:col-span-7 lg:row-span-4", ""), width: 1920, height: 1452, detail: landscapeDetail },
+  { title: "Residential Interior", type: "spatial", meta: "Residential · 2026", image: residentialLivingGarden, layout: tile(wide, "lg:col-span-6 lg:row-span-2", "lg:col-span-5 lg:row-span-2", ""), width: 1920, height: 1080, detail: residentialDetail },
+  { title: "Social Media Graphics", type: "visual", meta: "Promotional Design · 2026", image: socialThree, layout: tile(tall, "lg:col-span-3 lg:row-span-4 lg:col-start-1 lg:row-start-5", "", "lg:col-span-4 lg:row-span-4"), width: 1080, height: 1350, detail: socialDetail },
+  { title: "Product Showcase", type: "visual", meta: "Commercial Design · 2026", image: productFour, layout: tile(square, "lg:col-span-3 lg:row-span-2", "", "lg:col-span-4 lg:row-span-4"), width: 1080, height: 1080, detail: productDetail },
+  { title: "Storybook Covers & Characters", type: "visual", meta: "Illustration · 2026", image: storySi1, layout: tile(square, "lg:col-span-3 lg:row-span-2", "", "lg:col-span-4 lg:row-span-4"), width: 1254, height: 1254, detail: storyDetail },
+  { title: "Inclusive Food Court", type: "spatial", meta: "Public Interior · 2026", image: foodcourtHero, layout: tile(wide, "lg:col-span-5 lg:row-span-4", "lg:col-span-6 lg:row-span-3", ""), width: 2000, height: 1178, detail: foodCourtDetail },
+  { title: "Inclusive School", type: "spatial", meta: "Educational · 2026", image: schoolClassroom, layout: tile(wide, "lg:col-span-4 lg:row-span-2", "lg:col-span-5 lg:row-span-2", ""), width: 1672, height: 941, detail: schoolDetail },
+  { title: "Gallery Curation", type: "spatial", meta: "Exhibition · 2026", image: galleryWide, layout: tile(wide, "lg:col-span-4 lg:row-span-2", "lg:col-span-6 lg:row-span-3", ""), width: 1672, height: 941, detail: galleryDetail },
 ];
 
 
@@ -447,9 +458,9 @@ function Portfolio() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
-            {visibleProjects.map((project, index) => (
-              <article key={project.title} data-cursor role="button" tabIndex={0} onClick={() => setActive(project.detail)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActive(project.detail); } }} className={`group relative cursor-pointer overflow-hidden bg-surface ${project.type === "spatial" ? "lg:col-span-8" : "lg:col-span-4"} ${project.shape === "wide" ? "aspect-[16/10]" : project.shape === "square" ? "aspect-square" : "aspect-[4/5]"} ${filter === "all" && index === 2 ? "lg:col-start-5" : ""}`}>
+          <div className="grid grid-cols-1 gap-3 md:auto-rows-[200px] md:grid-cols-2 lg:auto-rows-[clamp(120px,10.5vw,165px)] lg:grid-cols-12 lg:gap-4" style={{ gridAutoFlow: "dense" }}>
+            {visibleProjects.map((project) => (
+              <article key={project.title} data-cursor role="button" tabIndex={0} onClick={() => setActive(project.detail)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActive(project.detail); } }} className={`group relative min-h-0 cursor-pointer overflow-hidden bg-surface ${project.layout[filter]}`}>
                 <img src={project.image} alt={`${project.title} — ${project.meta}`} width={project.width} height={project.height} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.045]" />
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/95 via-background/10 to-transparent p-5 opacity-100 transition-opacity duration-500 md:p-7 lg:opacity-0 lg:group-hover:opacity-100">
                   <div className="w-full translate-y-0 transition-transform duration-500 lg:translate-y-4 lg:group-hover:translate-y-0">
