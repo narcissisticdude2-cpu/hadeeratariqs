@@ -48,9 +48,21 @@ import schoolPlan from "@/assets/school-plan.webp";
 import schoolRestroom from "@/assets/school-restroom.webp";
 import schoolTherapy from "@/assets/school-therapy.webp";
 import schoolZoning from "@/assets/school-zoning.webp";
-import visualOne from "@/assets/visual-01.jpg";
-import visualTwo from "@/assets/visual-02.jpg";
-import visualThree from "@/assets/visual-03.jpg";
+import productOne from "@/assets/product-1.webp";
+import productTwo from "@/assets/product-2.webp";
+import productThree from "@/assets/product-3.webp";
+import productFour from "@/assets/product-4.webp";
+import productFive from "@/assets/product-5.webp";
+import socialOne from "@/assets/social-1.webp";
+import socialTwo from "@/assets/social-2.webp";
+import socialThree from "@/assets/social-3.webp";
+import socialPoster1 from "@/assets/social-poster-1.webp";
+import socialPoster2 from "@/assets/social-poster-2.webp";
+import storySi1 from "@/assets/story-si-1.webp";
+import storySi2 from "@/assets/story-si2.webp";
+import storySi3 from "@/assets/story-si3.webp";
+import storyC1 from "@/assets/story-c1.webp";
+import storyC2 from "@/assets/story-c2.webp";
 
 import { ProjectDrawer, type ProjectDetail } from "@/components/project-drawer";
 import { Button } from "@/components/ui/button";
@@ -88,7 +100,7 @@ type Project = {
   shape: "wide" | "square" | "portrait";
   width: number;
   height: number;
-  detail?: ProjectDetail;
+  detail: ProjectDetail;
 };
 
 const landscapeDetail: ProjectDetail = {
@@ -237,43 +249,59 @@ const galleryDetail: ProjectDetail = {
   ],
 };
 
+const productDetail: ProjectDetail = {
+  title: "Product Showcase",
+  meta: "Commercial Visual Design · Product Compositing · 2026",
+  overview:
+    "A curated series of commercial product visuals for premium fragrance, skincare, and personal care brands. Each concept frames the product as the hero through tailored colour, thematic props, and atmospheric lighting.",
+  sections: [
+    { label: "01 · Concept", heading: "Sauvage by Dior — architectural luminosity", note: "A moody, high-contrast visual built on architectural glass planes and focused spotlighting. Deep indigo and charcoal tones set off the amber gradient of the bottle.", image: productOne, width: 1080, height: 1080 },
+    { label: "02 · Concept", heading: "Victoria’s Secret Cucumber & Green Tea — organic freshness", note: "A dual-tone sage background with geometric colour blocks, floating cucumber slices, and tea-leaf accents that point to the hydrating botanical ingredients.", image: productTwo, width: 1080, height: 1080 },
+    { label: "03 · Concept", heading: "Avon Care Watermelon — dynamic splash", note: "A surreal composite of the lotion tube split into floating segments inside a swirl of hydration splash, with motion-blurred watermelon wedges suspended mid-air.", image: productThree, width: 1080, height: 1080 },
+    { label: "04 · Concept", heading: "Joy by Dior — monochromatic elegance", note: "A soft studio mock-up with the bottle on cylindrical pedestals. A dusty-rose palette and tropical leaf shadows give a warm, luxurious finish.", image: productFour, width: 1080, height: 1080 },
+    { label: "05 · Concept", heading: "Farmacy Niacinamide Night Mask — geometric shadowplay", note: "A diagonal colour-block composition in deep periwinkle and soft lavender, with botanical shadows that reinforce the calm, restorative focus of the product.", image: productFive, width: 1080, height: 1080 },
+  ],
+};
+
+const socialDetail: ProjectDetail = {
+  title: "Social Media Graphics",
+  meta: "Promotional Design · Brand Marketing · 2026",
+  overview:
+    "A collection of social media graphics and posters spanning recruitment, tech, skincare, interior design services, and editorial advocacy, built on strong visual hierarchy, brand alignment, and clear calls to action.",
+  sections: [
+    { label: "01 · Poster", heading: "We Are Hiring — interior designer", note: "A recruitment poster on a deep burgundy gradient. A studio-lit leather accent chair anchors the layout beneath bold typography.", image: socialOne, width: 1080, height: 1350 },
+    { label: "02 · Banner", heading: "Wireless headphones — feature banner", note: "Off-white over-ear headphones on a crinkled-paper texture, with outlined “WIRELESS” type and pill badges for playtime and noise cancellation.", image: socialTwo, width: 1080, height: 1350 },
+    { label: "03 · Ad", heading: "AURA Mixsoon Toner Essence — skincare ad", note: "A luminous promo with floating water droplets, a warm gold radial glow, thin-serif typography, and a clear call-to-action button.", image: socialThree, width: 1080, height: 1350 },
+    { label: "04 · Poster", heading: "Solidarity & Freedom — editorial poster", note: "Bold headline type over a newsprint-style textured background, centred on vector artwork of a raised fist wrapped in barbed wire.", image: socialPoster1, width: 1080, height: 1349 },
+    { label: "05 · Flyer", heading: "H.A.D.E.E.R.A Design Studio — services flyer", note: "A warm-neutral flyer for an interior architecture studio, using frosted glass cards, restrained grey typography, and an asymmetrical architectural frame.", image: socialPoster2, width: 2000, height: 2909 },
+  ],
+};
+
+const storyDetail: ProjectDetail = {
+  title: "Storybook Covers & Characters",
+  meta: "Children’s Illustration · Character Design · 2026",
+  overview:
+    "A collection of children’s storybook covers and standalone character illustrations, with expressive characters, whimsical settings, kid-friendly typography, and soft, harmonious palettes.",
+  sections: [
+    { label: "01 · Cover", heading: "Grandma’s Knitting Day", note: "A cosy interior with a grandmother knitting beside her curious cat. Soft pastel blues and warm yellows sit under playful hand-lettered type.", image: storySi1, width: 1254, height: 1254 },
+    { label: "02 · Cover", heading: "Little Skater Big Dreams", note: "A boy in a backwards cap holding his skateboard in a bright meadow, with vibrant primary accents against a cheerful sky-blue backdrop.", image: storySi2, width: 1024, height: 1024 },
+    { label: "03 · Cover", heading: "My Little Woodland Friend", note: "A boy and a friendly bunny in a forest clearing among red spotted mushrooms and butterflies, in deep navy and meadow-green tones.", image: storySi3, width: 1254, height: 1254 },
+    { label: "04 · Character", heading: "Stacked Bird Trio", note: "Three pastel birds hanging from a branch. Big-eyed characters and clean outline art on a dusty-blue background carry the comic timing.", image: storyC1, width: 1080, height: 1235 },
+    { label: "05 · Character", heading: "Baby Night Fury", note: "A big-eyed baby dragon on an olive-green ground, with smooth vector shapes, subtle gradient shadows, and high-contrast green eyes.", image: storyC2, width: 1080, height: 1350 },
+  ],
+};
+
 const projects: Project[] = [
   { title: "Departmental Landscape Redesign", type: "spatial", meta: "Landscape · 2026", image: landscapeFront, shape: "wide", width: 1920, height: 1452, detail: landscapeDetail },
   { title: "Residential Interior", type: "spatial", meta: "Residential · 2026", image: residentialLivingGarden, shape: "wide", width: 1920, height: 1080, detail: residentialDetail },
-  { title: "Northline Editions", type: "visual", meta: "Identity System · 2026", image: visualOne, shape: "portrait", width: 1104, height: 1408 },
+  { title: "Product Showcase", type: "visual", meta: "Commercial Design · 2026", image: productFour, shape: "square", width: 1080, height: 1080, detail: productDetail },
   { title: "Inclusive School", type: "spatial", meta: "Educational · 2026", image: schoolClassroom, shape: "wide", width: 1672, height: 941, detail: schoolDetail },
-  { title: "Axis Archive", type: "visual", meta: "Editorial · 2025", image: visualTwo, shape: "square", width: 1200, height: 1200 },
+  { title: "Social Media Graphics", type: "visual", meta: "Promotional Design · 2026", image: socialThree, shape: "portrait", width: 1080, height: 1350, detail: socialDetail },
   { title: "Gallery Curation", type: "spatial", meta: "Exhibition · 2026", image: galleryWide, shape: "wide", width: 1672, height: 941, detail: galleryDetail },
   { title: "Inclusive Food Court", type: "spatial", meta: "Public Interior · 2026", image: foodcourtHero, shape: "wide", width: 2000, height: 1178, detail: foodCourtDetail },
-  { title: "Atmospheres 03", type: "visual", meta: "Cultural Campaign · 2024", image: visualThree, shape: "portrait", width: 1104, height: 1408 },
+  { title: "Storybook Covers & Characters", type: "visual", meta: "Illustration · 2026", image: storySi1, shape: "square", width: 1254, height: 1254, detail: storyDetail },
 ];
 
-
-const visualImages = [
-  { image: visualOne, width: 1104, height: 1408 },
-  { image: visualTwo, width: 1200, height: 1200 },
-  { image: visualThree, width: 1104, height: 1408 },
-];
-
-function buildDetail(project: (typeof projects)[number]): ProjectDetail {
-  if (project.detail) return project.detail;
-  // Every spatial project carries its own detail; only the visual placeholders fall through to here.
-  const pick = (i: number) => visualImages[i % visualImages.length]!;
-
-  const sections = [
-    { label: "01 · Concept", heading: "Grid and structure", note: "The system begins as a typographic grid — column rhythm, margins, and scale steps that hold across every format.", ...pick(0) },
-    { label: "02 · Mood Board", heading: "Visual references", note: "Reference images, textures, and print stock set the tone before the identity is drawn.", ...pick(1) },
-    { label: "03 · Layouts", heading: "Editorial application", note: "Spreads and posters stress-test the system with dense and sparse content alike.", ...pick(2) },
-    { label: "04 · Collateral", heading: "Applied identity", note: "Signage, print collateral, and digital surfaces carry the same proportions as the spatial work.", ...pick(0) },
-  ];
-
-  return {
-    title: project.title,
-    meta: project.meta,
-    overview: "A visual system built from a strict grid — typography, imagery, and print collateral tuned into one consistent voice.",
-    sections,
-  };
-}
 
 function GlowDots() {
   return (
@@ -399,7 +427,7 @@ function Portfolio() {
 
       <section id="disciplines" className="grid min-h-[76svh] md:grid-cols-2">
         <Gateway href="#work" image={residentialLivingGarden} number="01" title="Spatial Design" detail="Interiors · CAD · 3D" onSelect={() => setFilter("spatial")} />
-        <Gateway href="#work" image={visualOne} number="02" title="Visual Systems" detail="Identity · Editorial · Campaigns" onSelect={() => setFilter("visual")} />
+        <Gateway href="#work" image={productFour} number="02" title="Visual Design" detail="Product · Social · Illustration" onSelect={() => setFilter("visual")} />
       </section>
 
       <section id="work" className="relative isolate overflow-hidden px-5 py-28 sm:px-8 sm:py-40 lg:px-12">
@@ -421,7 +449,7 @@ function Portfolio() {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
             {visibleProjects.map((project, index) => (
-              <article key={project.title} data-cursor role="button" tabIndex={0} onClick={() => setActive(buildDetail(project))} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActive(buildDetail(project)); } }} className={`group relative cursor-pointer overflow-hidden bg-surface ${project.type === "spatial" ? "lg:col-span-8" : "lg:col-span-4"} ${project.shape === "wide" ? "aspect-[16/10]" : project.shape === "square" ? "aspect-square" : "aspect-[4/5]"} ${filter === "all" && index === 2 ? "lg:col-start-5" : ""}`}>
+              <article key={project.title} data-cursor role="button" tabIndex={0} onClick={() => setActive(project.detail)} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActive(project.detail); } }} className={`group relative cursor-pointer overflow-hidden bg-surface ${project.type === "spatial" ? "lg:col-span-8" : "lg:col-span-4"} ${project.shape === "wide" ? "aspect-[16/10]" : project.shape === "square" ? "aspect-square" : "aspect-[4/5]"} ${filter === "all" && index === 2 ? "lg:col-start-5" : ""}`}>
                 <img src={project.image} alt={`${project.title} — ${project.meta}`} width={project.width} height={project.height} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.045]" />
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-background/95 via-background/10 to-transparent p-5 opacity-100 transition-opacity duration-500 md:p-7 lg:opacity-0 lg:group-hover:opacity-100">
                   <div className="w-full translate-y-0 transition-transform duration-500 lg:translate-y-4 lg:group-hover:translate-y-0">
