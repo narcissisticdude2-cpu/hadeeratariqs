@@ -427,7 +427,7 @@ function Portfolio() {
 
       <section id="disciplines" className="grid min-h-[76svh] md:grid-cols-2">
         <Gateway href="#work" image={residentialLivingGarden} number="01" title="Spatial Design" detail="Interiors · CAD · 3D" onSelect={() => setFilter("spatial")} />
-        <Gateway href="#work" image={productFour} number="02" title="Visual Design" detail="Product · Social · Illustration" onSelect={() => setFilter("visual")} />
+        <Gateway href="#work" image={storySi1} number="02" title="Visual Design" detail="Product · Social · Illustration" onSelect={() => setFilter("visual")} />
       </section>
 
       <section id="work" className="relative isolate overflow-hidden px-5 py-28 sm:px-8 sm:py-40 lg:px-12">
